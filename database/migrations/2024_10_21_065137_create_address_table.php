@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tour_schedules', function (Blueprint $table) {
+        Schema::create('address', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->date('time_in_date')->nullable();
-            $table->string('description')->nullable();
-            $table->foreignId('tour_detail_id')->constrained('tour_details','id')->cascadeOnDelete();
+            $table->foreignId('province_id')->constrained('provinces')->cascadeOnDelete();
+            $table->foreignId('district_id')->constrained('districts')->cascadeOnDelete();
+            $table->foreignId('ward_id')->constrained('wards')->cascadeOnDelete();
+
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tour_schedules');
+        Schema::dropIfExists('address');
     }
 };
