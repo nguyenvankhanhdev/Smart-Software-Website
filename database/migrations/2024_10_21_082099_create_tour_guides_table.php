@@ -9,15 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    //
     public function up(): void
     {
         Schema::create('tour_guides', function (Blueprint $table) {
             $table->id();
-            $table->integer('experience')->nullable();
-            $table->integer('number_of_tour')->nullable();
-            $table->string('knowledge')->nullable();
-            $table->foreignId('user_id')->constrained('users','id')->cascadeOnDelete();
-
+            $table->string('task')->nullable();
+            $table->foreignId('staff_id')->constrained('staffs','id')->cascadeOnDelete();
+            $table->foreignId('tour_schedules_id')->constrained('tour_schedules','id')->cascadeOnDelete();
             $table->timestamps();
         });
     }

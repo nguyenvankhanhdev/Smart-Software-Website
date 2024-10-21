@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -17,10 +18,14 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    
     protected $fillable = [
-        'name',
+        'full_name',
+        'username',
         'email',
         'password',
+        'start_date',
+        'role_id'
     ];
 
     /**
@@ -41,4 +46,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Define the relationship with the Roles model
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Roles::class, 'role_id', 'id');
+    }
+
+    // Define the relationship with the Customers model
+    public function customers(): HasMany
+    {
+        return $this->hasMany(Customers::class, 'user_id');
+    }
+
+    // Automatically hash the password before saving it to the database
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }
+

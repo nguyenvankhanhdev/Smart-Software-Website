@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tour_bills', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->decimal('total_amount',10,2)->nullable();
             $table->boolean('status')->default(0);
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('payment_method')->nullable();
             $table->date('create_bill_date')->nullable();
             $table->foreignId('book_tour_id')->constrained('book_tours','id')->cascadeOnDelete();
-            $table->foreignId('customer_id')->constrained('customers', 'id')->onDelete('no action');
+            $table->foreignId('customer_id')->constrained('customers', 'id')->cascadeOnDelete();
             $table->timestamps();
         });
     }

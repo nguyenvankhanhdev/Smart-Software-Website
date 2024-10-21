@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tour_id')->constrained('tours')->cascadeOnDelete();
             $table->string('title');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->foreignId('tour_place_id')->constrained('tour_places','id')->cascadeOnDelete();
-            $table->string('description')->nullable();
-            $table->decimal('price', 10, 2);
+            $table->decimal('price', 15, 2);
             $table->timestamps();
         });
     }

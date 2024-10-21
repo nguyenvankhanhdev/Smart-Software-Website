@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tour_schedules', function (Blueprint $table) {
+        Schema::create('schedules_transports', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->date('time_in_date')->nullable();
-            $table->string('description')->nullable();
-            $table->foreignId('tour_detail_id')->constrained('tour_details','id')->cascadeOnDelete();
+            $table->foreignId('transport_id')->constrained('transports')->cascadeOnDelete();
+            $table->foreignId('schedule_id')->constrained('tour_schedules')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tour_schedules');
+        Schema::dropIfExists('schedules_transports');
     }
 };

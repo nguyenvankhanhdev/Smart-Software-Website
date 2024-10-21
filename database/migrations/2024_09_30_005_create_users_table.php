@@ -9,18 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    // tài khoản
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
+
             $table->string('username')->unique();
             $table->string('password');
+            $table->boolean('status');
             $table->date('start_date')->nullable();
             $table->foreignId('role_id')->constrained('roles','id')->cascadeOnDelete();
-            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-
             $table->rememberToken();
             $table->timestamps();
         });

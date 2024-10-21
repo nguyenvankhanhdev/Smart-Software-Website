@@ -9,18 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    // đặt tour
     public function up(): void
     {
         Schema::create('book_tours', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tour_id')->constrained('tours')->cascadeOnDelete();
+            $table->foreignId('customer_id')->constrained('customers')->cascadeOnDelete();
             $table->integer('quantity');
             $table->date('booking_date');
-            $table->decimal('total_amount',10,2)->nullable();
+            $table->decimal('total_amount',15,0)->nullable();
             $table->boolean('status');
-            $table->string('reason_cancel')->nullable();
-            $table->decimal('refund_amount',10,2)->nullable();
-            $table->foreignId('customer_id')->constrained('customers')->cascadeOnDelete();
             $table->timestamps();
         });
     }

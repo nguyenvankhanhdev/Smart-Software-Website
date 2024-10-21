@@ -13,11 +13,18 @@ return new class extends Migration
     {
         Schema::create('staffs', function (Blueprint $table) {
             $table->id();
-            $table->string('diploma')->nullable();
-            $table->string('position')->nullable();
+            $table->string('diploma')->nullable();// bằng cấp
             $table->decimal('salary', 10, 2)->nullable();
-            $table->foreignId('user_id')->constrained('users','id')->cascadeOnDelete();
             $table->date('date_of_entry')->nullable();
+            $table->foreignId('depart_id')->constrained('departments','id')->cascadeOnDelete();
+            $table->string('fullname')->nullable();
+            $table->string('sex')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone');
+            $table->string('email')->unique();
+            $table->string('image')->nullable();
+            $table->foreignId('user_id')->constrained('users','id')->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

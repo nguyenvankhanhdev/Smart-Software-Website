@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    // Điểm du lịch
+    
     public function up(): void
     {
         Schema::create('tour_places', function (Blueprint $table) {
