@@ -47,9 +47,7 @@ class LoginController extends Controller
                 return  view('index');
             }
 
-         
-        } catch (Exception $e) 
-        {
+        } catch (Exception $e){
             dd($e->getMessage());
         }
 
