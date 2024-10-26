@@ -13,3 +13,14 @@ Route::get('/', [
 
 Route::get('/login', [LoginController::class, 'login'])->name("auth.login");
 Route::get('/tour-detail', [TourController::class, 'index'])->name('tour.detail');
+
+Route::get('/google-sign-in', [
+    LoginController::class ,
+     'getGoogleSignInUrl'
+ ])->name('GoogleSign');
+
+
+ Route::get('/auth/login-google-callback', [
+    LoginController::class ,
+     'loginCallback'
+ ])->name('Callback');
