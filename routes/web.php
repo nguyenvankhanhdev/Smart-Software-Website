@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\auth\LoginController;
-use App\Http\Controllers\FrontEnd\HomeController;
-use App\Http\Controllers\frontend\TourController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\TourController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', [
     HomeController::class,

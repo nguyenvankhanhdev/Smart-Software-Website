@@ -8,9 +8,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TourTypes extends Model
 {
+
     use HasFactory;
+
+    
     public function tours(): HasMany
     {
-        return $this->hasMany(Tours::class,'tuor_type_id');
+        return $this->hasMany(Tours::class,'type_id');
     }
 }

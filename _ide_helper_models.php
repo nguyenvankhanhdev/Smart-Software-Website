@@ -17,13 +17,11 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $tour_id
+ * @property int $customer_id
  * @property int $quantity
  * @property string $booking_date
  * @property string|null $total_amount
  * @property int $status
- * @property string|null $reason_cancel
- * @property string|null $refund_amount
- * @property int $customer_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Customers $customers
@@ -36,8 +34,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereCustomerId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereQuantity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereReasonCancel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereRefundAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereTotalAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereTourId($value)
@@ -51,7 +47,13 @@ namespace App\Models{
  * 
  *
  * @property int $id
- * @property string $ranking
+ * @property string|null $full_name
+ * @property string|null $sex
+ * @property string|null $dob
+ * @property string|null $phone
+ * @property string $email
+ * @property string|null $image
+ * @property string|null $address
  * @property int $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -59,9 +61,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Customers newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Customers newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Customers query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Customers whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Customers whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Customers whereDob($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Customers whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Customers whereFullName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Customers whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Customers whereRanking($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Customers whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Customers wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Customers whereSex($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Customers whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Customers whereUserId($value)
  */
@@ -96,8 +104,9 @@ namespace App\Models{
  * @property int $id
  * @property int $tour_id
  * @property string $title
+ * @property string $start_date
+ * @property string $end_date
  * @property int $tour_place_id
- * @property string|null $description
  * @property string $price
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -107,9 +116,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|TourDetail newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|TourDetail query()
  * @method static \Illuminate\Database\Eloquent\Builder|TourDetail whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourDetail whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TourDetail whereEndDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TourDetail whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TourDetail wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|TourDetail whereStartDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TourDetail whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TourDetail whereTourId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|TourDetail whereTourPlaceId($value)
@@ -205,12 +215,11 @@ namespace App\Models{
  * 
  *
  * @property int $id
- * @property string $full_name
  * @property string $username
  * @property string $password
+ * @property int $status
  * @property string|null $start_date
  * @property int $role_id
- * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -227,14 +236,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereFullName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRoleId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  */
