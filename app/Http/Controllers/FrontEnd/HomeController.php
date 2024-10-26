@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\FrontEnd;
+namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
-use GuzzleHttp\Client;
+use App\Models\LoaiBlog;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $client = new Client();
-
-        $response = $client->request('GET', 'http://127.0.0.1:8000/api/tours');
-
-        echo $response->getBody();
+            return view('index');
     }
 }
