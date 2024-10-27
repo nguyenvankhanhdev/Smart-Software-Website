@@ -11,10 +11,14 @@
                     </li>
 
                 </ul>
-                <div>
-                    <a href="/login" class="btn btn-login"><i class="fa-solid fa-user me-2"></i>Đăng nhập</a>
-                    <a href="/login" class="btn btn-register">Đăng ký</a>
+                <div id="userInfo" style="display:none;"></div> <!-- Thẻ để hiển thị tên người dùng -->
+
+                <div class="auth-buttons">
+                    <a href="{{ route('auth') }}" class="btn btn-login"><i class="fa-solid fa-user me-2"></i>Đăng
+                        nhập</a>
+                    <a href="{{ route('auth') }}" class="btn btn-register">Đăng ký</a>
                 </div>
+
 
             </div>
         </div>

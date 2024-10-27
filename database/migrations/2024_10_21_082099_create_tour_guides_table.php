@@ -14,9 +14,11 @@ return new class extends Migration
     {
         Schema::create('tour_guides', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('staff_id');
+            $table->unsignedInteger('tour_schedules_id');
             $table->string('task')->nullable();
-            $table->foreignId('staff_id')->constrained('staffs','id')->cascadeOnDelete();
-            $table->foreignId('tour_schedules_id')->constrained('tour_schedules','id')->cascadeOnDelete();
+            $table->foreign('staff_id')->references('id')->on('staffs')->cascadeOnDelete();
+            $table->foreign('tour_schedules_id')->references('id')->on('tour_schedules')->cascadeOnDelete();
             $table->timestamps();
         });
     }

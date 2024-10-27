@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('full_name')->nullable();
             $table->string('sex')->nullable();
             $table->date('dob')->nullable();
@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('image')->nullable();
             $table->string('address')->nullable();
-            $table->foreignId('user_id')->constrained('users','id')->cascadeOnDelete();
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

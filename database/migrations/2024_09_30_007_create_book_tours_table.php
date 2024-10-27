@@ -13,9 +13,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('book_tours', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('tour_id')->constrained('tours')->cascadeOnDelete();
-            $table->foreignId('customer_id')->constrained('customers')->cascadeOnDelete();
+            $table->increments('id');
+            $table->unsignedInteger('tour_id');
+            $table->foreign('tour_id')->references('id')->on('tours')->cascadeOnDelete();
+            $table->unsignedInteger( 'customer_id');
+            $table->foreign('customer_id')->references('id')->on('customers')->cascadeOnDelete();
             $table->integer('quantity');
             $table->date('booking_date');
             $table->decimal('total_amount',15,0)->nullable();
