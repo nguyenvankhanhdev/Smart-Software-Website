@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tour_schedules', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('title')->nullable();
             $table->date('time_in_date')->nullable();
             $table->string('description')->nullable();
-            $table->foreignId('tour_detail_id')->constrained('tour_details','id')->cascadeOnDelete();
+            $table->unsignedInteger('tour_detail_id');
+            $table->foreign('tour_detail_id')->references('id')->on('tour_details')->cascadeOnDelete();
             $table->timestamps();
         });
     }

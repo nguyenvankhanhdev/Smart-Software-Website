@@ -12,14 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->decimal('total_amount',10,2)->nullable();
             $table->boolean('status')->default(0);
             $table->date('payment_date')->nullable();
             $table->string('payment_method')->nullable();
             $table->date('create_bill_date')->nullable();
-            $table->foreignId('book_tour_id')->constrained('book_tours','id')->cascadeOnDelete();
-            $table->foreignId('customer_id')->constrained('customers', 'id')->cascadeOnDelete();
+            $table->unsignedInteger('book_tour_id');
+            $table->unsignedInteger('customer_id');
+            $table->foreign('book_tour_id')->references('id')->on('book_tours')->cascadeOnDelete();
+            $table->foreign('customer_id')->references('id')->on('customers')->cascadeOnDelete();
             $table->timestamps();
         });
     }

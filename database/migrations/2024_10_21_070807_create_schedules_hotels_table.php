@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('schedules_hotels', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('tour_schedule_id');
-            $table->unsignedBigInteger('hotel_id');
-            $table->unsignedBigInteger('room_type_id');
+            $table->increments('id');
+            $table->unsignedInteger('tour_schedule_id');
+            $table->unsignedInteger('hotel_id');
             $table->foreign('tour_schedule_id')->references('id')->on('tour_schedules')->cascadeOnDelete();
             $table->foreign('hotel_id')->references('id')->on('hotels')->cascadeOnDelete();
             $table->timestamps();

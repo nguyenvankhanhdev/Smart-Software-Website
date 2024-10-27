@@ -3535,8 +3535,8 @@ namespace Illuminate\Support\Facades {
          *
          * @template TCacheValue
          * @param array|string $key
-         * @param \Illuminate\Cache\TCacheValue|\Illuminate\Cache\(\Closure():  TCacheValue)  $default
-         * @return \Illuminate\Cache\(TCacheValue is null ? mixed : TCacheValue)
+         * @param \Illuminate\Cache\TCacheValue|(\Closure(): TCacheValue) $default
+         * @return (TCacheValue is null ? mixed : TCacheValue)
          * @static 
          */        public static function get($key, $default = null)
         {
@@ -3577,8 +3577,8 @@ namespace Illuminate\Support\Facades {
          *
          * @template TCacheValue
          * @param array|string $key
-         * @param \Illuminate\Cache\TCacheValue|\Illuminate\Cache\(\Closure():  TCacheValue)  $default
-         * @return \Illuminate\Cache\(TCacheValue is null ? mixed : TCacheValue)
+         * @param \Illuminate\Cache\TCacheValue|(\Closure(): TCacheValue) $default
+         * @return (TCacheValue is null ? mixed : TCacheValue)
          * @static 
          */        public static function pull($key, $default = null)
         {
@@ -6721,9 +6721,9 @@ namespace Illuminate\Support\Facades {
          *
          * @template TWhenParameter
          * @template TWhenReturnType
-         * @param \Illuminate\Filesystem\(\Closure($this):  TWhenParameter)|TWhenParameter|null  $value
-         * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $callback
-         * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $default
+         * @param (\Closure($this): TWhenParameter)|\Illuminate\Filesystem\TWhenParameter|null $value
+         * @param (callable($this, TWhenParameter): TWhenReturnType)|null $callback
+         * @param (callable($this, TWhenParameter): TWhenReturnType)|null $default
          * @return $this|\Illuminate\Filesystem\TWhenReturnType 
          * @static 
          */        public static function when($value = null, $callback = null, $default = null)
@@ -6736,9 +6736,9 @@ namespace Illuminate\Support\Facades {
          *
          * @template TUnlessParameter
          * @template TUnlessReturnType
-         * @param \Illuminate\Filesystem\(\Closure($this):  TUnlessParameter)|TUnlessParameter|null  $value
-         * @param \Illuminate\Filesystem\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $callback
-         * @param \Illuminate\Filesystem\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $default
+         * @param (\Closure($this): TUnlessParameter)|\Illuminate\Filesystem\TUnlessParameter|null $value
+         * @param (callable($this, TUnlessParameter): TUnlessReturnType)|null $callback
+         * @param (callable($this, TUnlessParameter): TUnlessReturnType)|null $default
          * @return $this|\Illuminate\Filesystem\TUnlessReturnType 
          * @static 
          */        public static function unless($value = null, $callback = null, $default = null)
@@ -15330,9 +15330,9 @@ namespace Illuminate\Support\Facades {
          *
          * @template TWhenParameter
          * @template TWhenReturnType
-         * @param \Illuminate\Filesystem\(\Closure($this):  TWhenParameter)|TWhenParameter|null  $value
-         * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $callback
-         * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $default
+         * @param (\Closure($this): TWhenParameter)|\Illuminate\Filesystem\TWhenParameter|null $value
+         * @param (callable($this, TWhenParameter): TWhenReturnType)|null $callback
+         * @param (callable($this, TWhenParameter): TWhenReturnType)|null $default
          * @return $this|\Illuminate\Filesystem\TWhenReturnType 
          * @static 
          */        public static function when($value = null, $callback = null, $default = null)
@@ -15345,9 +15345,9 @@ namespace Illuminate\Support\Facades {
          *
          * @template TUnlessParameter
          * @template TUnlessReturnType
-         * @param \Illuminate\Filesystem\(\Closure($this):  TUnlessParameter)|TUnlessParameter|null  $value
-         * @param \Illuminate\Filesystem\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $callback
-         * @param \Illuminate\Filesystem\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $default
+         * @param (\Closure($this): TUnlessParameter)|\Illuminate\Filesystem\TUnlessParameter|null $value
+         * @param (callable($this, TUnlessParameter): TUnlessReturnType)|null $callback
+         * @param (callable($this, TUnlessParameter): TUnlessReturnType)|null $default
          * @return $this|\Illuminate\Filesystem\TUnlessReturnType 
          * @static 
          */        public static function unless($value = null, $callback = null, $default = null)
@@ -17061,7 +17061,7 @@ namespace Illuminate\Support\Facades {
                     /**
          * Use the given callback to resolve attributes for script tags.
          *
-         * @param \Illuminate\Foundation\(callable(string,  string, ?array, ?array): array)|array  $attributes
+         * @param (callable(string, string, ?array, ?array): array)|array $attributes
          * @return \Illuminate\Foundation\Vite 
          * @static 
          */        public static function useScriptTagAttributes($attributes)
@@ -17072,7 +17072,7 @@ namespace Illuminate\Support\Facades {
                     /**
          * Use the given callback to resolve attributes for style tags.
          *
-         * @param \Illuminate\Foundation\(callable(string,  string, ?array, ?array): array)|array  $attributes
+         * @param (callable(string, string, ?array, ?array): array)|array $attributes
          * @return \Illuminate\Foundation\Vite 
          * @static 
          */        public static function useStyleTagAttributes($attributes)
@@ -17083,7 +17083,7 @@ namespace Illuminate\Support\Facades {
                     /**
          * Use the given callback to resolve attributes for preload tags.
          *
-         * @param \Illuminate\Foundation\(callable(string,  string, ?array, ?array): (array|false))|array|false  $attributes
+         * @param (callable(string, string, ?array, ?array): (array|false))|array|false $attributes
          * @return \Illuminate\Foundation\Vite 
          * @static 
          */        public static function usePreloadTagAttributes($attributes)
@@ -17198,6 +17198,87 @@ namespace Illuminate\Support\Facades {
          */        public static function flushMacros()
         {
                         \Illuminate\Foundation\Vite::flushMacros();
+        }
+            }
+    }
+
+namespace Flasher\Laravel\Facade {
+            /**
+     * 
+     *
+     * @method static NotificationBuilder addSuccess(string $message, array $options = array())
+     * @method static NotificationBuilder addError(string $message, array $options = array())
+     * @method static NotificationBuilder addWarning(string $message, array $options = array())
+     * @method static NotificationBuilder addInfo(string $message, array $options = array())
+     * @method static NotificationBuilder addFlash(NotificationInterface|string $type, string $message = null, array $options = array())
+     * @method static NotificationBuilder flash(StampInterface[] $stamps = array())
+     * @method static NotificationBuilder type(string $type, string $message = null, array $options = array())
+     * @method static NotificationBuilder message(string $message)
+     * @method static NotificationBuilder options(array $options, bool $merge = true)
+     * @method static NotificationBuilder option(string $name, $value)
+     * @method static NotificationBuilder success(string $message = null, array $options = array())
+     * @method static NotificationBuilder error(string $message = null, array $options = array())
+     * @method static NotificationBuilder info(string $message = null, array $options = array())
+     * @method static NotificationBuilder warning(string $message = null, array $options = array())
+     * @method static NotificationBuilder priority(int $priority)
+     * @method static NotificationBuilder hops(int $amount)
+     * @method static NotificationBuilder keep()
+     * @method static NotificationBuilder delay(int $delay)
+     * @method static NotificationBuilder now()
+     * @method static NotificationBuilder with(StampInterface[] $stamps = array())
+     * @method static NotificationBuilder withStamp(StampInterface $stamp)
+     * @method static NotificationBuilder handler(string $handler)
+     * @method static Envelope            getEnvelope()
+     */        class Flasher {
+                    /**
+         * Get a driver instance.
+         *
+         * @param string|null $alias
+         * @return \Flasher\Prime\Factory\NotificationFactoryInterface 
+         * @throws \InvalidArgumentException
+         * @static 
+         */        public static function create($alias = null)
+        {
+                        /** @var \Flasher\Prime\Flasher $instance */
+                        return $instance->create($alias);
+        }
+                    /**
+         * Get a driver instance.
+         *
+         * @param string|null $alias
+         * @return \Flasher\Prime\Factory\NotificationFactoryInterface 
+         * @throws \InvalidArgumentException
+         * @static 
+         */        public static function using($alias)
+        {
+                        /** @var \Flasher\Prime\Flasher $instance */
+                        return $instance->using($alias);
+        }
+                    /**
+         * 
+         *
+         * @param array<string, mixed> $criteria
+         * @param string $presenter
+         * @param array<string, mixed> $context
+         * @return mixed 
+         * @phpstan-return ($presenter is 'html' ? string : mixed)
+         * @static 
+         */        public static function render($criteria = [], $presenter = 'html', $context = [])
+        {
+                        /** @var \Flasher\Prime\Flasher $instance */
+                        return $instance->render($criteria, $presenter, $context);
+        }
+                    /**
+         * Register a custom driver creator.
+         *
+         * @param string $alias
+         * @param callable|\Flasher\Prime\Factory\NotificationFactoryInterface $factory
+         * @return static 
+         * @static 
+         */        public static function addFactory($alias, $factory)
+        {
+                        /** @var \Flasher\Prime\Flasher $instance */
+                        return $instance->addFactory($alias, $factory);
         }
             }
     }
@@ -17575,6 +17656,80 @@ namespace Spatie\LaravelIgnition\Facades {
         {
                         /** @var \Spatie\FlareClient\Flare $instance */
                         return $instance->group($groupName, $properties);
+        }
+            }
+    }
+
+namespace Yoeunes\Toastr\Facades {
+            /**
+     * 
+     *
+     */        class Toastr {
+                    /**
+         * Shortcut for adding an error notification.
+         *
+         * @param string $message The notification's message
+         * @param string $title The notification's title
+         * @param array<string, mixed> $options The notification's options
+         * @return \Toastr 
+         * @static 
+         */        public static function error($message, $title = '', $options = [])
+        {
+                        /** @var \Yoeunes\Toastr\Toastr $instance */
+                        return $instance->error($message, $title, $options);
+        }
+                    /**
+         * Shortcut for adding an info notification.
+         *
+         * @param string $message The notification's message
+         * @param string $title The notification's title
+         * @param array<string, mixed> $options The notification's options
+         * @return \Toastr 
+         * @static 
+         */        public static function info($message, $title = '', $options = [])
+        {
+                        /** @var \Yoeunes\Toastr\Toastr $instance */
+                        return $instance->info($message, $title, $options);
+        }
+                    /**
+         * Shortcut for adding a success notification.
+         *
+         * @param string $message The notification's message
+         * @param string $title The notification's title
+         * @param array<string, mixed> $options The notification's options
+         * @return \Toastr 
+         * @static 
+         */        public static function success($message, $title = '', $options = [])
+        {
+                        /** @var \Yoeunes\Toastr\Toastr $instance */
+                        return $instance->success($message, $title, $options);
+        }
+                    /**
+         * Shortcut for adding a warning notification.
+         *
+         * @param string $message The notification's message
+         * @param string $title The notification's title
+         * @param array<string, mixed> $options The notification's options
+         * @return \Toastr 
+         * @static 
+         */        public static function warning($message, $title = '', $options = [])
+        {
+                        /** @var \Yoeunes\Toastr\Toastr $instance */
+                        return $instance->warning($message, $title, $options);
+        }
+                    /**
+         * Add a notification.
+         *
+         * @param string $type could be error, info, success, or warning
+         * @param string $message The notification's message
+         * @param string $title The notification's title
+         * @param array<string, mixed> $options The notification's options
+         * @return \Toastr 
+         * @static 
+         */        public static function addNotification($type, $message, $title = '', $options = [])
+        {
+                        /** @var \Yoeunes\Toastr\Toastr $instance */
+                        return $instance->addNotification($type, $message, $title, $options);
         }
             }
     }
@@ -18581,9 +18736,9 @@ namespace  {
              *
              * @template TWhenParameter
              * @template TWhenReturnType
-             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TWhenParameter)|TWhenParameter|null  $value
-             * @param \Illuminate\Database\Eloquent\(callable($this,  TWhenParameter): TWhenReturnType)|null  $callback
-             * @param \Illuminate\Database\Eloquent\(callable($this,  TWhenParameter): TWhenReturnType)|null  $default
+             * @param (\Closure($this): TWhenParameter)|\Illuminate\Database\Eloquent\TWhenParameter|null $value
+             * @param (callable($this, TWhenParameter): TWhenReturnType)|null $callback
+             * @param (callable($this, TWhenParameter): TWhenReturnType)|null $default
              * @return $this|\Illuminate\Database\Eloquent\TWhenReturnType 
              * @static 
              */            public static function when($value = null, $callback = null, $default = null)
@@ -18596,9 +18751,9 @@ namespace  {
              *
              * @template TUnlessParameter
              * @template TUnlessReturnType
-             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TUnlessParameter)|TUnlessParameter|null  $value
-             * @param \Illuminate\Database\Eloquent\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $callback
-             * @param \Illuminate\Database\Eloquent\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $default
+             * @param (\Closure($this): TUnlessParameter)|\Illuminate\Database\Eloquent\TUnlessParameter|null $value
+             * @param (callable($this, TUnlessParameter): TUnlessReturnType)|null $callback
+             * @param (callable($this, TUnlessParameter): TUnlessReturnType)|null $default
              * @return $this|\Illuminate\Database\Eloquent\TUnlessReturnType 
              * @static 
              */            public static function unless($value = null, $callback = null, $default = null)
@@ -21137,7 +21292,9 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
+            class Flasher extends \Flasher\Laravel\Facade\Flasher {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
+            class Toastr extends \Yoeunes\Toastr\Facades\Toastr {}
     }
 
 

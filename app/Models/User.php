@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -18,7 +19,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    
+
     protected $fillable = [
         'full_name',
         'username',
@@ -59,10 +60,5 @@ class User extends Authenticatable
         return $this->hasMany(Customers::class, 'user_id');
     }
 
-    // Automatically hash the password before saving it to the database
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
 }
 

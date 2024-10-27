@@ -12,11 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tour_cancels', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->decimal('refunds',15,0);
             $table->dateTime('date_cancel');
             $table->string('reason_cancel',1000);
-            $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
+            $table->unsignedInteger('order_id');
+            $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete();
             $table->timestamps();
         });
     }
