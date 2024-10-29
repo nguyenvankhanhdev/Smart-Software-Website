@@ -72,7 +72,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        if($request->user()->role_id === 'admin') {
+        if($request->user()->role_id === '1') {
             return redirect()->route('admin.dashboard')->with('success', 'Đăng nhập thành công');
         }
 

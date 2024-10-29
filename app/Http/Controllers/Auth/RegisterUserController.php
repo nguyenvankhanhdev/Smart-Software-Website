@@ -10,12 +10,14 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
+use App\Models\TourTypes;
 
 class RegisterUserController extends Controller
 {
     public function index()
     {
-        return view('auth.login');
+        $tourTypes = TourTypes::all();
+        return view('auth.login', compact('tourTypes'));
     }
     public function store(Request $request)
     {
@@ -33,7 +35,7 @@ class RegisterUserController extends Controller
         $user->role_id = 2;
         $user->password = Hash::make($request->password);
         $user->save();
-        
+
         event(new Registered($user));
 
         Auth::login($user);
