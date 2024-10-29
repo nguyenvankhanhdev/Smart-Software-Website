@@ -2,7 +2,6 @@
 
 @section('renderBody')
     @include('frontend.tour.component.slider.main-slider-detail')
-
     <section class="tour-details">
         <div class="tour-details__top">
             <div class="container">

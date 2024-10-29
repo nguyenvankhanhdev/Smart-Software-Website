@@ -5,13 +5,19 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\TourController;
 use Illuminate\Support\Facades\Route;
 
+require __DIR__.'/auth.php';
 
 Route::get('/', [
     HomeController::class,
     "index"
-])->name('user.dashboard');
 
-require __DIR__.'/auth.php';
+])->name('user.dashboard');
+Route::get('/', [
+    HomeController::class,
+    "index"
+])->name('/');
+
+
 
 Route::get('/tour-detail', [TourController::class, 'index'])->name('tour.detail');
 

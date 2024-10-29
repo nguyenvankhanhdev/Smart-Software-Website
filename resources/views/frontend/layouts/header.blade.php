@@ -13,13 +13,27 @@
                 </ul>
                 <div id="userInfo" style="display:none;"></div> <!-- Thẻ để hiển thị tên người dùng -->
 
+
                 <div class="auth-buttons">
-                    <a href="{{ route('auth') }}" class="btn btn-login"><i class="fa-solid fa-user me-2"></i>Đăng
-                        nhập</a>
-                    <a href="{{ route('auth') }}" class="btn btn-register">Đăng ký</a>
+                    @if (auth()->check())
+                        <div class="dropdown">
+                            <a href="#" class="btn btn-login dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-user me-2"></i>{{ auth()->user()->username }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown_user"  aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="">Cài đặt</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    @else
+                        <a href="{{ route('auth') }}" class="btn btn-login">
+                            <i class="fa-solid fa-user me-2"></i>Đăng nhập
+                        </a>
+                        <a href="{{ route('auth') }}" class="btn btn-register">Đăng ký</a>
+                    @endif
                 </div>
-
-
             </div>
         </div>
     </nav>
@@ -48,10 +62,12 @@
                             <a class="nav-link" aria-current="page" href="/">Trang chủ</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle" id="dropdownMenuButton1" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">Tour trong nước</a>
-                            <ul class="dropdown-menu">
-                                <!-- Các mục dropdown -->
+                            <ul class="dropdown-menu" >
+                                {{-- @foreach ($tourTypes as $tourType)
+                                    <li><a class="dropdown-item text-uppercase fs-6" href="">{{ $tourType->name }}</a></li>
+                                @endforeach --}}
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -200,6 +216,7 @@
     }
 </style>
 
+@push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const header = document.getElementById('header');
@@ -214,3 +231,5 @@
         });
     });
 </script>
+
+@endpush
