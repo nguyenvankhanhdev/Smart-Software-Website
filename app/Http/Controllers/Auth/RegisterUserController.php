@@ -16,22 +16,19 @@ class RegisterUserController extends Controller
 {
     public function index()
     {
-        $tourTypes = TourTypes::all();
-        return view('auth.login', compact('tourTypes'));
+        return view('auth.login');
     }
     public function store(Request $request)
     {
-        $currentDate = Carbon::now()->format('Y-m-d');
         $request->validate([
             'username' => 'required',
             'email' => 'required|email',
             'password' => 'required'
         ]);
-
         $user = new User();
         $user->username = $request->username;
+        $user->email = $request->email;
         $user->status = 1;
-        $user->start_date = $currentDate;
         $user->role_id = 2;
         $user->password = Hash::make($request->password);
         $user->save();
@@ -40,7 +37,7 @@ class RegisterUserController extends Controller
 
         Auth::login($user);
         return response()->json([
-            'status'=>'success',
+            'status' => 'success',
             'message' => 'Đăng kí thành công !!',
         ]);
     }
