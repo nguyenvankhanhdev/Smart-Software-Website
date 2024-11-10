@@ -9,4 +9,3 @@ use App\Http\Controllers\Api\TourDetailController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\BookTourController;
 
-

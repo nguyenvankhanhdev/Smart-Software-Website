@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class TourPlaces extends Model
 {
     use HasFactory;
-    public function tours(): HasMany
+    public function tourdetails(): HasMany
     {
-        return $this->hasMany(TourDetail::class,'tour_place_id');
+        return $this->hasMany(TourDetails::class,'tour_place_id');
     }
 }

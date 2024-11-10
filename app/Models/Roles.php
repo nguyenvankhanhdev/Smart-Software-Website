@@ -9,7 +9,7 @@ use App\Models\User;
 class Roles extends Model
 {
     use HasFactory;
-    public function users():HasMany
+    public function user():HasMany
     {
         return $this->hasMany(User::class,'role_id');
     }

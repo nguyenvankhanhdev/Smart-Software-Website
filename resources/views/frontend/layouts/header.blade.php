@@ -24,7 +24,14 @@
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
                                 <li><a class="dropdown-item" href="">Cài đặt</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Đăng xuất</a></li>
+                                <li><form method="POST" action="{{ route('auth.logout') }}">
+                                    @csrf
+                                        <a href="{{route('auth.logout')}}" onclick="event.preventDefault();
+                                        this.closest('form').submit();" class="dropdown-item has-icon text-danger">
+                                            <i class="fas fa-sign-out-alt"></i> Logout
+                                        </a>
+                                    </form>
+                                </li>
                             </ul>
                         </div>
                     @else

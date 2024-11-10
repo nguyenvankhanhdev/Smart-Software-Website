@@ -21,46 +21,7 @@ use Log;
 
 class LoginController extends Controller
 {
-    // public function login() {
-    //     return view('auth.login');
-    // }
 
-    // public function getGoogleSignInUrl()
-    // {
-    //    return Socialite::driver('google')->redirect();
-    // }
-    // public function loginCallback()
-    // {
-
-    //     try {
-    //         $user = Socialite::driver('google')->user();
-    //         $finduser = User::where('google_id', $user->id)->first();
-    //         if($finduser)
-    //         {
-    //             Auth::login($finduser);
-    //             Session::put('name', $finduser->name);
-    //             return view ('index');
-    //         }
-    //         else
-    //         {
-    //             $newUser = User::create([
-    //                 'name' => $user->name,
-    //                 'email' => $user->email,
-    //                 'google_id'=> $user->id,
-    //                 'nhomquyen_id'=>'1',
-    //                 'status'=>'Hoạt động',
-    //                 'password' => encrypt('123456dummy')
-    //             ]);
-    //             Auth::login($newUser);
-    //             Session::put('name', $newUser->name);
-    //             return  view('index');
-    //         }
-
-    //     } catch (Exception $e){
-    //         dd($e->getMessage());
-    //     }
-
-    // }
 
     public function login(LoginRequest $request)
     {
@@ -72,10 +33,13 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        if($request->user()->role_id === '1') {
-            return redirect()->route('admin.dashboard')->with('success', 'Đăng nhập thành công');
+        Log::info('Admin login '. $request->user()->role->name);
+        if ($request->user()->role->name === 'admin') {
+            Log::info('Admin login '. $request->user());
+            toastr()->success('Đăng nhập thành công');
+            return redirect()->route('admin.dashboard');
         }
-
+        toastr()->success('Đăng nhập thành công');
         return redirect()->intended(RouteServiceProvider::HOME);
     }
     public function logout(Request $request)
@@ -85,7 +49,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
-        return redirect()->route('/');
+        toastr()->success('Đăng xuất thành công');
+        return redirect()->route('user.dashboard');
     }
 }

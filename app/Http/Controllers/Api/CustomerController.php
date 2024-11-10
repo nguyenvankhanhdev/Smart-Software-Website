@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\DB;
 class CustomerController extends Controller
 {
     public function index(){
+
         $customer = Customers::with('users')->get();
+
         $format = $customer->map(function($customer){
             return [
                 'id' => $customer->id,

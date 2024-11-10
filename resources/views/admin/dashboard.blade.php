@@ -34,7 +34,7 @@
                                 <h4>Todays Peding Orders</h4>
                             </div>
                             <div class="card-body">
-                                {{  }}
+
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                                 <h4>Total Orders</h4>
                             </div>
                             <div class="card-body">
-                                {{  }}
+
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a href="{{  }}">
+                <a href=" ">
                     <div class="card card-statistic-1">
                         <div class="card-icon bg-primary">
                             <i class="fas fa-cart-plus"></i>
@@ -70,7 +70,7 @@
                                 <h4>Total Pending Orders</h4>
                             </div>
                             <div class="card-body">
-                                {{  }}
+
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a href="{{  }}">
+                <a href=" ">
                     <div class="card card-statistic-1">
                         <div class="card-icon bg-danger">
                             <i class="fas fa-cart-plus"></i>
@@ -88,7 +88,7 @@
                                 <h4>Total Canceled Orders</h4>
                             </div>
                             <div class="card-body">
-                                {{  }}
+
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a href="{{ route('admin.delivered-orders') }}">
+                <a href="   ">
                     <div class="card card-statistic-1">
                         <div class="card-icon bg-danger">
                             <i class="fas fa-cart-plus"></i>
@@ -106,7 +106,7 @@
                                 <h4>Total Complelte Orders</h4>
                             </div>
                             <div class="card-body">
-                                {{ $totalCompleteOrders }}
+
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                                 <h4>Todays Earnings</h4>
                             </div>
                             <div class="card-body">
-                                {{$settings->currency_icon}}{{ $todaysEarnings }}
+
                             </div>
                         </div>
                     </div>
@@ -214,7 +214,7 @@
                                 <h4>Total Categories</h4>
                             </div>
                             <div class="card-body">
-                                {{ $totalCategories }}
+
                             </div>
                         </div>
                     </div>
