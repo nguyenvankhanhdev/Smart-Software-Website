@@ -13,9 +13,12 @@ class BookTours extends Model
         return $this->belongsTo(Tours::class,'tour_id','id');
 
     }
-    public function customers()
+    public function detailbooktours()
     {
-        return $this->belongsTo(Customers::class,'customer_id','id');
+        return $this->hasMany(DetailBookTours::class,'book_tour_id','id');
+    }
+    public function orders(){
+        return $this->hasMany(Orders::class,'book_tour_id','id');
     }
 
 

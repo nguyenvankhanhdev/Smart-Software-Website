@@ -1,12 +1,17 @@
 @extends('frontend.layouts.app')
 
-@section('renderBody')
+@push('style')
     <link rel="stylesheet" href="{{ asset('frontend/css/styleLogin.css') }}">
+@endpush
+@section('renderBody')
     <div style="margin-top: 150px; padding-bottom: 50px;">
-        <div class="container" id="container">
+        <div class="container-login container-xl" id="container">
             <div class="form-container sign-up">
-                <form>
+
+                <form action="{{ asset('register') }}" method="POST">
+                    @csrf
                     <h2 style="font-weight: 800; color: rgb(1, 148, 243);">Create Account</h2>
+
                     <div class="social-icons">
                         <a href="#" class="icon"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                 width="20" height="20" viewBox="0 0 48 48">
@@ -57,18 +62,31 @@
                         </a>
                     </div>
                     <span class="mb-3">or use your email for registeration</span>
-                    <input type="text" placeholder="Name">
-                    <input type="email" placeholder="Email">
-                    <input type="password" placeholder="Password">
-                    <button>Sign Up</button>
+                    <span class="mb-3">
+
+                    </span>
+                    <input type="text" placeholder="Name" name="name" required>
+                    <input type="email" placeholder="Email" name="email" required>
+                    <input type="password" placeholder="Password" name="password" required>
+                    <button type="submit">Sign Up</button>
+
                 </form>
             </div>
             <div class="form-container sign-in">
-                <form>
+                {{-- @if (session('success'))
+                   <p>
+                        {{ session('success') }}
+                    </p>
+                    @php
+                        session()->forget('success');
+                    @endphp
+                @endif --}}
+                <form action="{{ route('login') }}" method="POST">
+                    @csrf
                     <h2 style="font-weight: 800; color:rgb(1, 148, 243);">Sign In</h2>
                     <div class="social-icons">
-                        <a href="{{ route('GoogleSign') }}" class="icon"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                                width="20" height="20" viewBox="0 0 48 48">
+                        <a href="{{ route('GoogleSign') }}" class="icon"><svg xmlns="http://www.w3.org/2000/svg" x="0px"
+                                y="0px" width="20" height="20" viewBox="0 0 48 48">
                                 <path fill="#fbc02d"
                                     d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12	s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20	s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z">
                                 </path>
@@ -116,10 +134,10 @@
                         </a>
                     </div>
                     <span class="mb-3">or use your email password</span>
-                    <input type="email" placeholder="Email">
-                    <input type="password" placeholder="Password">
+                    <input type="email" placeholder="Email" name="email_login">
+                    <input type="password" placeholder="Password" name="password_login">
                     <a href="#">Forget Your Password?</a>
-                    <button>Sign In</button>
+                    <button type="submit">Sign In</button>
                 </form>
             </div>
             <div class="toggle-container">
@@ -138,5 +156,32 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('frontend/js/scriptLogin.js') }}"></script>
+    @if (session('success'))
+        @push('script')
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    var toastEl = document.getElementById('toast');
+                    var toast = new bootstrap.Toast(toastEl);
+                    toast.show(); // Hiện Toast
+                });
+            </script>
+        @endpush
+    @endif
+    @push('script')
+        <script src="{{ asset('frontend/js/scriptLogin.js') }}"></script>
+    @endpush
+
+    <div aria-live="polite" aria-atomic="true" style="position: relative; z-index: 1050;">
+        <div class="toast-container">
+            <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Thông báo</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    {{ session('success') }}
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

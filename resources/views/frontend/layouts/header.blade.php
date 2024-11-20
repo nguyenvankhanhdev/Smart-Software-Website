@@ -11,9 +11,28 @@
                     </li>
 
                 </ul>
-                <div>
-                    <a href="/login" class="btn btn-login"><i class="fa-solid fa-user me-2"></i>Đăng nhập</a>
-                    <a href="/login" class="btn btn-register">Đăng ký</a>
+                <div class="d-flex align-items-center">
+                    @if (session('user'))
+                        <button href="#" class="show-form-search me-3"><i class="fas fa-search"></i></button>
+                        <div class="dropdown">
+                            <a href="#" class="btn btn-login dropdown-toggle" id="userDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-user me-2"></i>{{ session('user')->tentaikhoan }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                            </ul>
+                        </div>
+                    @else
+                        <button href="#" class="show-form-search me-3"><i class="fas fa-search"></i></button>
+                        <a href="{{ route('login_view') }}" class="btn btn-login"><i
+                                class="fa-solid fa-user me-2"></i>Đăng nhập</a>
+                    @endif
                 </div>
 
             </div>
@@ -40,52 +59,63 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav flex-grow-1 pe-3">
-                        <li class="nav-item">
+                        <li class="nav-item centro">
                             <a class="nav-link" aria-current="page" href="/">Trang chủ</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">Tour trong nước</a>
-                            <ul class="dropdown-menu">
-                                <!-- Các mục dropdown -->
+                            <div class="centro" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#">Danh sách tour</a>
+                            </div>
+
+                            <ul class="dropdown-menu dropdown-column">
+                                {{-- <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('tour.all-tour') }}">Tất cả tour</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">Tour nước ngoài</a>
-                            <ul class="dropdown-menu">
+                            <div class="centro" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#">Điểm du lịch</a>
+                            </div>
+
+                            <ul class="dropdown-menu dropdown-column">
                                 <!-- Các mục dropdown -->
                             </ul>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">Điểm đến</a>
-                            <ul class="dropdown-menu">
-                                <!-- Các mục dropdown -->
-                            </ul>
+                        <li class="nav-item centro">
+                            <a class="nav-link" href="{{ route('blog.blog-all') }}">Tin tức</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Tin tức</a>
+                        <li class="nav-item centro">
+                            <a class="nav-link" href="{{ route('about') }}">Giới thiệu</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Giới thiệu</a>
+                        <li class="nav-item centro">
+                            <a class="nav-link" href="{{ route('contact') }}">Liên hệ</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Liên hệ</a>
+                        <li class="nav-item d-lg-none  centro">
+                            <a class="nav-link" href="{{ route('login_view') }}">Đăng nhập</a>
+                        </li>
+                        <li class="nav-item d-lg-none">
+                            <a class="nav-link"><button class="show-form-search"><i
+                                        class="fas fa-search"></i></button></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
-
     @if (Request::is('/'))
         <style>
             .navbar-custom .navbar-brand,
             .navbar-custom .nav-link,
             .navbar-custom .nav-item,
             .navbar-custom .navbar-toggler-icon,
-            .navbar-brand-mobile {
+            .navbar-brand-mobile,
+            .show-form-search {
                 color: #fff;
             }
 
@@ -99,7 +129,8 @@
                 }
             }
 
-            .btn-login {
+            .btn-login,
+            .show-form-search {
                 color: #fff;
                 border: 1px solid #fff;
             }
@@ -108,6 +139,11 @@
                 background-color: rgba(79, 79, 79, 0);
                 border: 1px solid #fff;
                 color: #fff;
+            }
+
+            .centro:hover:after {
+                width: 100%;
+                background: #fff;
             }
         </style>
     @else
@@ -118,95 +154,28 @@
             }
 
             .btn-login {
-                color: rgb(104, 113, 118);
+                color: rgb(1, 148, 243);
             }
         </style>
     @endif
+
 </header>
 
-<style>
-    @media (max-width: 767px) {
-        .navbar-brand-mobile {
-            display: block;
-            font-weight: 700;
-        }
-    }
+@include('frontend.layouts.component.search-box')
 
-    .navbar-transparent {
-        background-color: rgba(0, 0, 0, 0);
-        border-bottom: 1px solid #ccc;
-        transition: background-color 0.3s ease;
-    }
+@push('script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('header');
+            if (!header) return;
 
-    .navbar-scrolled {
-        background-color: #fff;
-        box-shadow: 0 6px 20px rgba(155, 155, 155, 0.3);
-    }
-
-    .navbar-custom.navbar-scrolled .navbar-brand,
-    .navbar-custom.navbar-scrolled .nav-link,
-    .navbar-custom.navbar-scrolled .nav-item,
-    .navbar-custom.navbar-scrolled .navbar-toggler-icon,
-    .navbar-custom.navbar-scrolled .navbar-brand-mobile {
-        color: rgb(104, 113, 118);
-        font-weight: 700;
-    }
-
-    .navbar-custom.navbar-scrolled .btn-login {
-        color: rgb(104, 113, 118);
-        ;
-        border: 1px solid rgb(1, 148, 243);
-    }
-
-    .nav-normal.navbar-scrolled {
-        border-bottom: none;
-    }
-
-    .dropdown-menu {
-        column-count: 3;
-        column-gap: 1rem;
-    }
-
-    .btn-login,
-    .btn-login:hover {
-        border: 1px solid rgb(1, 148, 243);
-    }
-
-    .btn-login {
-        font-weight: 700;
-    }
-
-    .btn-register {
-        color: #fff;
-        background-color: rgb(1, 148, 243);
-        font-weight: 700;
-    }
-
-    .btn-register:hover {
-        color: #fff;
-        background-color: rgb(1, 121, 219);
-    }
-
-    .navbar-toggler {
-        border: none;
-    }
-
-    .nav-pad-bot {
-        padding-top: 0;
-    }
-</style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const header = document.getElementById('header');
-        if (!header) return;
-
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                header.classList.add('navbar-scrolled');
-            } else {
-                header.classList.remove('navbar-scrolled');
-            }
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('navbar-scrolled');
+                } else {
+                    header.classList.remove('navbar-scrolled');
+                }
+            });
         });
-    });
-</script>
+    </script>
+@endpush
