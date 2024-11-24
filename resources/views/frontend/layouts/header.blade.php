@@ -21,12 +21,12 @@
                                 <i class="fa-solid fa-user me-2"></i>{{ session('user')->tentaikhoan }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ route('profile') }}">Hồ sơ</a></li>
                                 <li><a class="dropdown-item" href="#">Setting</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}">Đăng xuất</a></li>
                             </ul>
                         </div>
                     @else
@@ -92,7 +92,7 @@
                             </ul>
                         </li>
                         <li class="nav-item centro">
-                            <a class="nav-link" href="{{ route('blog.blog-all') }}">Tin tức</a>
+                            <a class="nav-link" href="{{ route('blog.blog-all') }}">Blog</a>
                         </li>
                         <li class="nav-item centro">
                             <a class="nav-link" href="{{ route('about') }}">Giới thiệu</a>
