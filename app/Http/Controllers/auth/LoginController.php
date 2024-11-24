@@ -16,10 +16,6 @@ use Laravel\Sanctum\PersonalAccessToken;
 use Laravel\Socialite\Facades\Socialite;
 use Log;
 
-use App\Http\Requests\Auth\LoginRequest;
-use Illuminate\Support\Facades\Hash;
-
-use Log;
 
 class LoginController extends Controller
 {
@@ -140,3 +136,4 @@ class LoginController extends Controller
 //         return redirect()->route('user.dashboard');
 //     }
 // }
+}
