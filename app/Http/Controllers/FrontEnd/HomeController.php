@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BlogTours;
 use App\Models\LoaiBlog;
 use App\Models\Tours;
+use App\Models\TourTypes;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
@@ -25,5 +26,7 @@ class HomeController extends Controller
 
     public function contact() {
         return view('frontend.home.contact');
+
     }
+
 }

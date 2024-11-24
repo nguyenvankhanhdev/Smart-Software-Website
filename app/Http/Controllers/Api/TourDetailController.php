@@ -11,7 +11,7 @@ class TourDetailController extends Controller
     public function index()
     {
         $tourDetails = TourDetail::with('tour', 'tourPlace')->get();
-
+        
         $formattedTourDetails = $tourDetails->map(function ($tourDetail) {
             return [
                 'id' => $tourDetail->id,

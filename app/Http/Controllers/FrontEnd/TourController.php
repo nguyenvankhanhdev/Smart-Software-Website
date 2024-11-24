@@ -56,5 +56,6 @@ class TourController extends Controller
         $count = $tours->count();
 
         return view('frontend.tour.tourSearch', compact('tours',  'tourCategories', 'query', 'count'));
+
     }
 }

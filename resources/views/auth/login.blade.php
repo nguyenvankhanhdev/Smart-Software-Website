@@ -185,3 +185,46 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="{{ asset('frontend/js/scriptLogin.js') }}"></script>
+@endpush
+@push('jquery')
+    <script>
+        $('#registerForm').on('submit', function(e) {
+            e.preventDefault();
+            var data = $(this).serialize();
+            if ($('input[name="password"]').val() != $('input[name="password_confirm"]').val()) {
+                toastr.error('Xác nhận mật khẩu không đúng vui lòng thử lại!!!');
+                return;
+            }
+            if ($('input[name="password"]').val().length < 6) {
+                toastr.error('Mật khẩu phải lớn hơn 6 ký tự!!!');
+                return;
+            }
+            var username = $('input[name="username"]').val();
+            if (!/[a-zA-Z]/.test(username) || !/[0-9]/.test(username)) {
+                toastr.error('Tên đăng nhập phải có ít nhất một chữ cái và một số!!!');
+                return;
+            }
+            if ($('input[name="email"]').val().length < 6) {
+                toastr.error('Email phải lớn hơn 6 ký tự!!!');
+                return;
+            }
+            $.ajax({
+                url: "{{ route('auth.register') }}",
+                method: 'POST',
+                data: data,
+                success: function(response) {
+                    if (response.status == 'success') {
+                        toastr.success(response.message);
+                        setTimeout(() => {
+                            $('#container').removeClass('active');
+                        }, 500);
+                    } else {
+                        toastr.error(response.message);
+                    }
+                }
+            });
+        });
+    </script>
+@endpush

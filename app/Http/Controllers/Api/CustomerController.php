@@ -11,12 +11,14 @@ use Illuminate\Support\Facades\DB;
 class CustomerController extends Controller
 {
     public function index(){
+
         $customer = Customers::with('users')->get();
+
         $format = $customer->map(function($customer){
             return [
                 'id' => $customer->id,
                 'ranking' => $customer->ranking,
-                'user_id    ' => $customer->users
+                'user_id' => $customer->users
             ];
         });
         return response()->json([
@@ -89,14 +91,6 @@ class CustomerController extends Controller
         catch(\Exception $ex){
 
         }
-
-        return response()->json([
-            'message' => 'Customers created successfully',
-            'status' => true,
-        ], 201);
-
-
-
     }
 
 }

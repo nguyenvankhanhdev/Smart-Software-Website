@@ -4,16 +4,26 @@ namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Cookie;
 use Exception;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Providers\RouteServiceProvider;
+use Laravel\Sanctum\PersonalAccessToken;
+
 use Laravel\Socialite\Facades\Socialite;
+use Log;
+
+use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Support\Facades\Hash;
+
 use Log;
 
 class LoginController extends Controller
 {
+
     public function index()
     {
         return view('auth.login');
@@ -23,8 +33,13 @@ class LoginController extends Controller
     {
         return Socialite::driver('google')->redirect();
     }
-    public function loginCallback()
+    public function loginCallback() {}
+
+
+
+    public function login(LoginRequest $request)
     {
+        Auth::guard('web')->logout();
 
         try {
             $user = Socialite::driver('google')->user();
@@ -49,6 +64,24 @@ class LoginController extends Controller
         } catch (Exception $e) {
             dd($e->getMessage());
         }
+        $request->session()->regenerateToken();
+
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        Log::info('Admin login '. $request->user()->role->name);
+        if ($request->user()->role->name === 'admin') {
+            Log::info('Admin login '. $request->user());
+            toastr()->success('Đăng nhập thành công');
+            return redirect()->route('admin.dashboard');
+        }
+        toastr()->success('Đăng nhập thành công');
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
     }
 
     public function register(Request $request)
@@ -99,36 +132,11 @@ class LoginController extends Controller
     }
 
 
+//     public function create_Info($mataikhoan) {
+//         $request->session()->invalidate();
 
-    public function login(Request $request)
-    {
-        try {
-            if (Auth::attempt(['email' => $request->email_login, 'password' => $request->password_login])) {
-                $request->session()->regenerate(); // Regenerate session for security
-                $user =  $request->user();
-                Session::put('user', $user);
-                return redirect()->route('home');
-            }
-            return back()->withErrors([
-                'message' => 'Thông tin đăng nhập không chính xác.',
-            ])->withInput();
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('error', $th->getMessage());
-        }
-    }
-
-    public function logout(Request $request)
-    {
-        try {
-            Auth::logout(); // Log the user out
-            $request->session()->invalidate(); // Invalidate session
-            $request->session()->regenerateToken(); // Regenerate CSRF token
-            Session::put('success', 'Đăng xuất thành công');
-            return redirect()->route('login_view');
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('error', $th->getMessage());
-        }
-    }
-
-    public function create_Info($mataikhoan) {}
-}
+//         $request->session()->regenerateToken();
+//         toastr()->success('Đăng xuất thành công');
+//         return redirect()->route('user.dashboard');
+//     }
+// }

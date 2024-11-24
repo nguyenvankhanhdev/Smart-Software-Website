@@ -12,6 +12,7 @@ class ToursController extends Controller
 {
     public function index(Request $request)
     {
+        // Validate the input
         $validator = Validator::make($request->all(), [
             'page' => 'min:1|max:1000|integer',
             'size' => 'min:1|max:2000|integer'
@@ -22,17 +23,30 @@ class ToursController extends Controller
                 'message' => 'Validation failed',
                 'data' => $validator->errors(),
                 'status' => false,
-
             ], 400);
         }
-        $query = Tours::query();
-        $query->with(['tourType']);
+        $query = Tours::with(['tourType']);
         $page = $request->page ?? 1;
         $size = $request->size ?? 12;
         $data = $query->paginate($size, ['*'], 'page', $page);
+
+        $format = collect($data->items())->map(function ($tour) {
+            return [
+                
+                'name' => $tour->name,
+                'description' => $tour->description,
+                'start_date' => $tour->start_date,
+                'status' => $tour->status,
+                'image' => $tour->image,
+                'time_go' => $tour->time_go,
+                'start_place' => $tour->start_place,
+                'tour_type' => $tour->tourType,
+            ];
+        });
+
         return response()->json([
             'message' => 'Successfully request',
-            'data' => $data->items(),
+            'data' => $format,
             'paginate' => [
                 'per_page' => $size,
                 'current_page' => $page,
@@ -40,9 +54,10 @@ class ToursController extends Controller
                 'total_pages' => $data->lastPage(),
             ],
             'status' => true,
-
         ], 200);
     }
+
+
     public function store(Request $request)
     {
         if ($request->has('tours')) {
@@ -86,16 +101,16 @@ class ToursController extends Controller
         DB::beginTransaction();
         try {
             foreach ($tourData as $tour) {
-                $tour = new Tours();
-                $tour->name = $tour['name'];
-                $tour->description = $tour['description'];
-                $tour->start_date = $tour['start_date'];
-                $tour->status = $tour['status'];
-                $tour->image = $tour['image'];
-                $tour->time_go = $tour['time_go'];
-                $tour->start_place = $tour['start_place'];
-                $tour->type_id = $tour['type_id'];
-                $tour->save();
+                $newTour = new Tours();
+                $newTour->name = $tour['name'];
+                $newTour->description = $tour['description'];
+                $newTour->start_date = $tour['start_date'];
+                $newTour->status = $tour['status'];
+                $newTour->image = $tour['image'];
+                $newTour->time_go = $tour['time_go'];
+                $newTour->start_place = $tour['start_place'];
+                $newTour->type_id = $tour['type_id'];
+                $newTour->save();
             }
             DB::commit();
             return response()->json([
