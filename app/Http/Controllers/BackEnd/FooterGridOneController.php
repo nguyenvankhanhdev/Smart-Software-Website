@@ -18,7 +18,7 @@ class FooterGridOneController extends Controller
     {
         $footerInfo = FooterGridOne::first();
         // dd($footerInfor);
-        return view('admin.footer.footer-grid-one.index', compact('footerInfo'));
+        return view('backend.footer.footer-grid-one.index', compact('footerInfo'));
     }
 
     /**

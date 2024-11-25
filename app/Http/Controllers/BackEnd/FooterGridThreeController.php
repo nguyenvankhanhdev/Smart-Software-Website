@@ -17,7 +17,7 @@ class FooterGridThreeController extends Controller
     public function index(FooterGridThreeDatatables $dataTable)
     {
         $footerTitle = FooterTitle::first();
-        return $dataTable->render('admin.footer.footer-grid-three.index', compact('footerTitle'));
+        return $dataTable->render('backend.footer.footer-grid-three.index', compact('footerTitle'));
     }
 
     /**
@@ -25,7 +25,7 @@ class FooterGridThreeController extends Controller
      */
     public function create()
     {
-        return view('admin.footer.footer-grid-three.create');
+        return view('backend.footer.footer-grid-three.create');
     }
 
     /**
@@ -49,7 +49,7 @@ class FooterGridThreeController extends Controller
 
         toastr('Created Successfully!', 'success', 'success');
 
-        return redirect()->route('admin.footer-grid-three.index');
+        return redirect()->route('footer-grid-three.index');
     }
 
     /**
@@ -66,7 +66,7 @@ class FooterGridThreeController extends Controller
     public function edit(string $id)
     {
         $footer = FooterGridThree::findOrFail($id);
-        return view('admin.footer.footer-grid-three.edit', compact('footer'));
+        return view('backend.footer.footer-grid-three.edit', compact('footer'));
     }
 
     /**
@@ -90,7 +90,7 @@ class FooterGridThreeController extends Controller
 
         toastr('Update Successfully!', 'success', 'success');
 
-        return redirect()->route('admin.footer-grid-three.index');
+        return redirect()->route('footer-grid-three.index');
     }
 
     /**

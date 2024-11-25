@@ -15,7 +15,7 @@ class FooterSocialController extends Controller
      */
     public function index(FooterSocialDatatables $dataTable)
     {
-        return $dataTable->render('admin.footer.footer-socials.index');
+        return $dataTable->render('backend.footer.footer-socials.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class FooterSocialController extends Controller
      */
     public function create()
     {
-        return view('admin.footer.footer-socials.create');
+        return view('backend.footer.footer-socials.create');
     }
 
     /**
@@ -49,7 +49,7 @@ class FooterSocialController extends Controller
 
         toastr('Created Successfully!', 'success', 'success');
 
-        return redirect()->route('admin.footer-socials.index');
+        return redirect()->route('footer-socials.index');
     }
 
     /**
@@ -66,7 +66,7 @@ class FooterSocialController extends Controller
     public function edit(string $id)
     {
         $footer = FooterSocial::findOrFail($id);
-        return view('admin.footer.footer-socials.edit', compact('footer'));
+        return view('backend.footer.footer-socials.edit', compact('footer'));
     }
 
     /**
@@ -92,7 +92,7 @@ class FooterSocialController extends Controller
 
         toastr('Updated Successfully!', 'success', 'success');
 
-        return redirect()->route('admin.footer-socials.index');
+        return redirect()->route('footer-socials.index');
     }
 
     /**

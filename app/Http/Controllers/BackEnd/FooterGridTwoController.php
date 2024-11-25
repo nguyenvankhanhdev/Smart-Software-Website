@@ -17,7 +17,7 @@ class FooterGridTwoController extends Controller
     public function index(FooterGridTwoDatatables $dataTable)
     {
         $footerTitle = FooterTitle::first();
-        return $dataTable->render('admin.footer.footer-grid-two.index', compact('footerTitle'));
+        return $dataTable->render('backend.footer.footer-grid-two.index', compact('footerTitle'));
     }
 
     /**
@@ -25,7 +25,7 @@ class FooterGridTwoController extends Controller
      */
     public function create()
     {
-        return view('admin.footer.footer-grid-two.create');
+        return view('backend.footer.footer-grid-two.create');
     }
 
     /**
@@ -49,7 +49,7 @@ class FooterGridTwoController extends Controller
 
         toastr('Created Successfully!', 'success', 'success');
 
-        return redirect()->route('admin.footer-grid-two.index');
+        return redirect()->route('footer-grid-two.index');
     }
 
     /**
@@ -58,7 +58,7 @@ class FooterGridTwoController extends Controller
     public function edit(string $id)
     {
         $footer = FooterGridTwo::findOrFail($id);
-        return view('admin.footer.footer-grid-two.edit', compact('footer'));
+        return view('backend.footer.footer-grid-two.edit', compact('footer'));
     }
 
     /**
@@ -82,7 +82,7 @@ class FooterGridTwoController extends Controller
 
         toastr('Update Successfully!', 'success', 'success');
 
-        return redirect()->route('admin.footer-grid-two.index');
+        return redirect()->route('footer-grid-two.index');
     }
 
     /**

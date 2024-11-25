@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\DataTables\LoaiBlogDatatables;
 use App\Http\Controllers\Controller;
-use App\Models\BlogTypes;
 use App\Models\LoaiBlog;
 use Illuminate\Http\Request;
 
@@ -15,7 +14,7 @@ class LoaiBlogController extends Controller
      */
     public function index(LoaiBlogDatatables $dataTable)
     {
-        return $dataTable->render('admin.blog.loaiblog.index');
+        return $dataTable->render('backend.blog.loaiblog.index');
     }
 
     /**
@@ -23,7 +22,7 @@ class LoaiBlogController extends Controller
      */
     public function create()
     {
-        return view('admin.blog.loaiblog.create');
+        return view('backend.blog.loaiblog.create');
     }
 
     /**
@@ -35,12 +34,12 @@ class LoaiBlogController extends Controller
             'tenloaiblog' => 'required',
         ]);
 
-        $loaiblog = new BlogTypes();
+        $loaiblog = new LoaiBlog();
         $loaiblog->tenloaiblog = $request->tenloaiblog;
 
         $loaiblog->save();
 
-        return redirect()->route('admin.loaiblog.index');
+        return redirect()->route('loaiblog.index');
     }
 
     /**
@@ -48,8 +47,8 @@ class LoaiBlogController extends Controller
      */
     public function edit($maloaiblog)
     {
-        $loaiblog = BlogTypes::findOrFail($maloaiblog);
-        return view('admin.blog.loaiblog.edit', compact('loaiblog'));
+        $loaiblog = LoaiBlog::findOrFail($maloaiblog);
+        return view('backend.blog.loaiblog.edit', compact('loaiblog'));
     }
 
     /**
@@ -61,11 +60,11 @@ class LoaiBlogController extends Controller
             'tenloaiblog' => 'required',
         ]);
 
-        $loaiblog = BlogTypes::findOrFail($id);
+        $loaiblog = LoaiBlog::findOrFail($id);
         $loaiblog->tenloaiblog = $request->input('tenloaiblog');
 
         $loaiblog->save();
-        return redirect()->route('admin.loaiblog.index')->with('success', 'Cập nhật loại blog thành công!');
+        return redirect()->route('loaiblog.index')->with('success', 'Cập nhật loại blog thành công!');
     }
 
     /**
@@ -73,7 +72,7 @@ class LoaiBlogController extends Controller
      */
     public function destroy($maloaiblog)
     {
-        BlogTypes::find($maloaiblog)->delete();
+        LoaiBlog::find($maloaiblog)->delete();
         return response(['status' => 'success', 'message' => 'Xóa loại blog thành công']);
     }
 
@@ -85,7 +84,7 @@ class LoaiBlogController extends Controller
 
         $ids = $request->input('ids');
 
-        BlogTypes::whereIn('maloaiblog', $ids)->delete();
+        LoaiBlog::whereIn('maloaiblog', $ids)->delete();
 
         return response()->json(['message' => 'Xóa thành công các mục đã chọn!']);
     }

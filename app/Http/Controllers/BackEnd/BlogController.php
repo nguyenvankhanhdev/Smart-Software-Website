@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\BlogDatatables;
 use App\Http\Controllers\Controller;
 use App\Models\BlogTour;
-use App\Models\BlogTours;
-use App\Models\BlogTypes;
 use App\Models\LoaiBlog;
 use App\Models\NhanVien;
 use Illuminate\Http\Request;
@@ -23,7 +21,7 @@ class BlogController extends Controller
      */
     public function index(BlogDatatables $dataTable)
     {
-        return $dataTable->render('admin.blog.index');
+        return $dataTable->render('backend.blog.index');
     }
 
     /**
@@ -31,8 +29,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $loaiblog = BlogTypes::all();
-        return view('admin.blog.create', compact('loaiblog'));
+        $loaiblog = LoaiBlog::all();
+        return view('backend.blog.create', compact('loaiblog'));
     }
 
     /**
@@ -55,19 +53,19 @@ class BlogController extends Controller
                 return back()->withErrors(['hinhanh' => 'Hình ảnh không được tải lên.']);
             }
 
-            // $nhanvien = NhanVien::where('mataikhoan', $user->mataikhoan)->first();
+            $nhanvien = NhanVien::where('mataikhoan', $user->mataikhoan)->first();
 
-            $blog = new BlogTours();
+            $blog = new BlogTour();
             $blog->tieude = $request->tieude;
             $blog->slug = Str::slug($request->tieude);
             $blog->noidung = $request->noidung;
             $blog->trangthaiblog = $request->trangthaiblog;
             $blog->maloaiblog = $request->maloaiblog;
-            // $blog->manhanvien = $nhanvien->manhanvien;
+            $blog->manhanvien = $nhanvien->manhanvien;
             $blog->hinhanh = $imagePath;
             // $blog->user_id = Auth::user()->id;
             $blog->save();
-            return redirect()->route('admin.blog.index');
+            return redirect()->route('blog.index');
         }
         return redirect()->route('dashboard');
     }
@@ -85,15 +83,15 @@ class BlogController extends Controller
      */
     public function edit($mablogtour)
     {
-        $blog = BlogTours::findOrFail($mablogtour);
-        $loaiblog = BlogTypes::all();
-        return view('admin.blog.edit', compact('blog', 'loaiblog'));
+        $blog = BlogTour::findOrFail($mablogtour);
+        $loaiblog = LoaiBlog::all();
+        return view('backend.blog.edit', compact('blog', 'loaiblog'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $mablogtour)
     {
         if (Session::has('user')) {
             $user = Session::get('user');
@@ -101,11 +99,10 @@ class BlogController extends Controller
                 'tieude' => 'required|string|max:255',
                 'noidung' => 'required',
                 'trangthaiblog' => 'required',
-                'hinhanh' => 'required',
                 'maloaiblog' => 'required',
             ]);
 
-            $blog = BlogTours::findOrFail($id);
+            $blog = BlogTour::findOrFail($mablogtour);
             $blog->tieude = $request->input('tieude');
             $blog->slug = Str::slug($request->tieude);
             $blog->noidung = $request->input('noidung');
@@ -114,12 +111,17 @@ class BlogController extends Controller
             // $blog->manhanvien = $user->manhanvien;
             $blog->updated_at = now();
 
-            $imagePath = $this->updateImage($request, 'hinhanh', 'frontend/images/blog/uploads', $blog->hinhanh);
-            $blog->hinhanh = $imagePath;
+            if ($request->hasFile('hinhanh')) {
+                $imagePath = $this->updateImage($request, 'hinhanh', 'frontend/images/blog/uploads', $blog->hinhanh);
+                $blog->hinhanh = $imagePath;
+            }
+            else {
+                $blog->hinhanh = $blog->hinhanh;
+            }
 
             $blog->save();
 
-            return redirect()->route('admin.blog.index')->with('success', 'Cập nhật blog thành công!');
+            return redirect()->route('blog.index')->with('success', 'Cập nhật blog thành công!');
         }
     }
 
@@ -128,7 +130,7 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $blog = BlogTours::find($id)->delete();
+        $blog = BlogTour::find($id)->delete();
         $this->deleteImage($blog->hinhanh);
         return response(['status' => 'success', 'message' => 'Xóa blog thành công']);
     }
@@ -140,7 +142,7 @@ class BlogController extends Controller
             'trangthaiblog' => 'required',
         ]);
 
-        $tour = BlogTours::findOrFail($request->mablogtour);
+        $tour = BlogTour::findOrFail($request->mablogtour);
         $tour->trangthaiblog = $request->trangthaiblog === 'true' ? 1 : 0;
         $tour->save();
 
