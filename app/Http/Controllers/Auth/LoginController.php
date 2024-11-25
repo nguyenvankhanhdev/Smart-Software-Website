@@ -15,20 +15,22 @@ use Laravel\Sanctum\PersonalAccessToken;
 use Laravel\Socialite\Facades\Socialite;
 
 use App\Http\Requests\LoginRequest;
+
 use Illuminate\Support\Facades\Hash;
 
 use Log;
 
 class LoginController extends Controller
 {
+
     public function login(LoginRequest $request)
     {
+
 
         Auth::guard('web')->logout();
 
         $request->session()->regenerateToken();
-
-        // Authenticate user
+      
         $request->authenticate();
 
         $request->session()->regenerate();
@@ -45,6 +47,7 @@ class LoginController extends Controller
         toastr()->success('Đăng nhập thành công');
         return redirect()->intended(RouteServiceProvider::HOME);
     }
+
 
     public function logout(Request $request)
     {
@@ -87,4 +90,5 @@ class LoginController extends Controller
             dd("Something wrong! " . $e->getMessage());
         }
     }
+
 }
