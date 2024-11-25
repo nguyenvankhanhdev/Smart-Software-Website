@@ -58,7 +58,7 @@
                         </a>
                     </div>
                     <span class="mb-3">or use your email for registeration</span>
-                    <input type="text" name="username" placeholder="Username">
+                    <input type="text" name="tentaikhoan" placeholder="Username">
                     <input type="email" name="email" placeholder="Email">
                     <input type="password" name="password" placeholder="Password">
                     <input type="password" name="password_confirm" placeholder="Confirm Password">
@@ -70,7 +70,7 @@
                     @csrf
                     <h2 style="font-weight: 800; color:rgb(1, 148, 243);">Sign In</h2>
                     <div class="social-icons">
-                        <a href="" class="icon"><svg xmlns="http://www.w3.org/2000/svg" x="0px"
+                        <a href="{{ route('auth.google') }}" class="icon"><svg xmlns="http://www.w3.org/2000/svg" x="0px"
                                 y="0px" width="20" height="20" viewBox="0 0 48 48">
                                 <path fill="#fbc02d"
                                     d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12	s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20	s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z">
@@ -119,8 +119,8 @@
                         </a>
                     </div>
                     <span class="mb-3">or use your email password</span>
-                    <input type="text" name="username" placeholder="Username">
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="text" name="email" placeholder="Nhập email">
+                    <input type="password" name="password" placeholder="Mật Khẩu">
                     <a href="#">Forget Your Password?</a>
                     <button type="submit">Sign In</button>
                 </form>
@@ -150,35 +150,32 @@
         $('#registerForm').on('submit', function(e) {
             e.preventDefault();
             var data = $(this).serialize();
-            if ($('input[name="password"]').val() != $('input[name="password_confirm"]').val()) {
-                toastr.error('Xác nhận mật khẩu không đúng vui lòng thử lại!!!');
-                return;
-            }
-            if ($('input[name="password"]').val().length < 6) {
-                toastr.error('Mật khẩu phải lớn hơn 6 ký tự!!!');
-                return;
-            }
-            var username = $('input[name="username"]').val();
-            if (!/[a-zA-Z]/.test(username) || !/[0-9]/.test(username)) {
-                toastr.error('Tên đăng nhập phải có ít nhất một chữ cái và một số!!!');
-                return;
-            }
-            if ($('input[name="email"]').val().length < 6) {
-                toastr.error('Email phải lớn hơn 6 ký tự!!!');
-                return;
-            }
+            // var username = $('input[name="matkhau"]').val();
+            // if (!/[a-zA-Z]/.test(username) || !/[0-9]/.test(username)) {
+            //     toastr.error('Tên đăng nhập phải có ít nhất một chữ cái và một số!!!');
+            //     return;
+            // }
             $.ajax({
                 url: "{{ route('auth.register') }}",
                 method: 'POST',
                 data: data,
                 success: function(response) {
-                    if (response.status == 'success') {
+                    if (response.status === 'success') {
                         toastr.success(response.message);
                         setTimeout(() => {
                             $('#container').removeClass('active');
-                        }, 500);
+                        }, 300);
                     } else {
                         toastr.error(response.message);
+                    }
+                },
+                error: function(xhr) {
+                    if (xhr.responseJSON && xhr.responseJSON.errors) {
+                        Object.keys(xhr.responseJSON.errors).forEach(function(key) {
+                            toastr.error(xhr.responseJSON.errors[key][0]);
+                        });
+                    } else {
+                        toastr.error('Đã xảy ra lỗi, vui lòng thử lại.');
                     }
                 }
             });

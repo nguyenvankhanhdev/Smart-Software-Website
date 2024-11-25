@@ -18,7 +18,7 @@
                     @if (auth()->check())
                         <div class="dropdown">
                             <a href="#" class="btn btn-login dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-user me-2"></i>{{ auth()->user()->username }}
+                                <i class="fa-solid fa-user me-2"></i>{{ auth()->user()->tentaikhoan }}
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown_user"  aria-labelledby="userDropdown">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>

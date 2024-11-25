@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -18,6 +16,21 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    protected $primaryKey = 'mataikhoan';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'tentaikhoan',
+        'email',
+        'password',
+        'trangthai',
+        'manhomquyen',
+        'google_id',
+    ];
+
 
     /**
      * The attributes that should be cast.
@@ -28,17 +41,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Define the relationship with the Roles model
-    public function role(): BelongsTo
-    {
-        return $this->belongsTo(Roles::class, 'role_id', 'id');
+    /* @return string
+    */
+
+    public function nhomquyen(){
+        return $this->belongsTo(nhomquyen::class,'manhomquyen','manhomquyen');
     }
 
-    // Define the relationship with the Customers model
-    public function customers(): HasMany
+    public function khachhang()
     {
-        return $this->hasMany(Customers::class, 'user_id');
+        return $this->hasOne(KhachHang::class,'mataikhoan');
+    }
+    public function nhanVien()
+    {
+        return $this->hasOne(NhanVien::class, 'mataikhoan', 'mataikhoan');
     }
 
 }
-

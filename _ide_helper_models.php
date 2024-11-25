@@ -15,13 +15,196 @@ namespace App\Models{
 /**
  * 
  *
- * @property-read \App\Models\BlogTypes|null $blogtypes
- * @property-read \App\Models\Employees|null $employees
- * @method static \Illuminate\Database\Eloquent\Builder|BlogTours newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|BlogTours newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|BlogTours query()
+ * @property int $mablogtour
+ * @property string $tieude
+ * @property string $slug
+ * @property string $hinhanh
+ * @property string $noidung
+ * @property int $trangthaiblog
+ * @property int $maloaiblog
+ * @property int $manhanvien
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\LoaiBlog $loaiblog
+ * @property-read \App\Models\NhanVien $nhanvien
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogTour newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogTour newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogTour query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogTour whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogTour whereHinhanh($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogTour whereMablogtour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogTour whereMaloaiblog($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogTour whereManhanvien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogTour whereNoidung($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogTour whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogTour whereTieude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogTour whereTrangthaiblog($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogTour whereUpdatedAt($value)
  */
-	class BlogTours extends \Eloquent {}
+	class BlogTour extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $makhachhang
+ * @property int $maphieudattour
+ * @property float $chitietsotiendat
+ * @property-read \App\Models\KhachHang $khachhang
+ * @property-read \App\Models\PhieuDatTour $phieudattour
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietPhieuDatTour newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietPhieuDatTour newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietPhieuDatTour query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietPhieuDatTour whereChitietsotiendat($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietPhieuDatTour whereMakhachhang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietPhieuDatTour whereMaphieudattour($value)
+ */
+	class ChiTietPhieuDatTour extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property string $ngaybatdau
+ * @property string $ngayketthuc
+ * @property int $giachitiettour
+ * @property int $matour
+ * @property int $madiemdulich
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\DiemDuLich $diemdulich
+ * @property-read \App\Models\Tour $tour
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietTour newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietTour newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietTour query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietTour whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietTour whereGiachitiettour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietTour whereMadiemdulich($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietTour whereMatour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietTour whereNgaybatdau($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietTour whereNgayketthuc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChiTietTour whereUpdatedAt($value)
+ */
+	class ChiTietTour extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $machucvu
+ * @property string $tenchucvu
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PhanCongChucVu> $phancongchucvu
+ * @property-read int|null $phancongchucvu_count
+ * @method static \Illuminate\Database\Eloquent\Builder|ChucVu newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChucVu newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChucVu query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChucVu whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChucVu whereMachucvu($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChucVu whereTenchucvu($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChucVu whereUpdatedAt($value)
+ */
+	class ChucVu extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $machuongtrinhtour
+ * @property string $tieude
+ * @property string $ngay
+ * @property string $mota
+ * @property int $matour
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Tour $tour
+ * @method static \Illuminate\Database\Eloquent\Builder|ChuongTrinhTour newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChuongTrinhTour newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChuongTrinhTour query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChuongTrinhTour whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChuongTrinhTour whereMachuongtrinhtour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChuongTrinhTour whereMatour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChuongTrinhTour whereMota($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChuongTrinhTour whereNgay($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChuongTrinhTour whereTieude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChuongTrinhTour whereUpdatedAt($value)
+ */
+	class ChuongTrinhTour extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $madanhgia
+ * @property string $noidung
+ * @property int $diemdanhgia
+ * @property int $makhachhang
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\KhachHang $khachhang
+ * @method static \Illuminate\Database\Eloquent\Builder|DanhGia newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DanhGia newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DanhGia query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DanhGia whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DanhGia whereDiemdanhgia($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DanhGia whereMadanhgia($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DanhGia whereMakhachhang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DanhGia whereNoidung($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DanhGia whereUpdatedAt($value)
+ */
+	class DanhGia extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $madiemdulich
+ * @property string $tendiemdulich
+ * @property string $motadiemdulich
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ChiTietTour> $chitiettour
+ * @property-read int|null $chitiettour_count
+ * @method static \Illuminate\Database\Eloquent\Builder|DiemDuLich newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DiemDuLich newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DiemDuLich query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DiemDuLich whereMadiemdulich($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DiemDuLich whereMotadiemdulich($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DiemDuLich whereTendiemdulich($value)
+ */
+	class DiemDuLich extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string|null $logo
+ * @property string|null $phone
+ * @property string|null $email
+ * @property string|null $address
+ * @property string|null $copyright
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridOne newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridOne newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridOne query()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridOne whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridOne whereCopyright($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridOne whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridOne whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridOne whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridOne whereLogo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridOne wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridOne whereUpdatedAt($value)
+ */
+	class FooterGridOne extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -30,77 +213,21 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property string $url
+ * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\BlogTours> $blogtours
- * @property-read int|null $blogtours_count
- * @method static \Illuminate\Database\Eloquent\Builder|BlogTypes newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|BlogTypes newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|BlogTypes query()
- * @method static \Illuminate\Database\Eloquent\Builder|BlogTypes whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BlogTypes whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BlogTypes whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BlogTypes whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridThree newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridThree newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridThree query()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridThree whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridThree whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridThree whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridThree whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridThree whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridThree whereUrl($value)
  */
-	class BlogTypes extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * 
- *
- * @property int $id
- * @property int $tour_id
- * @property string $book_date
- * @property float $price
- * @property string $status
- * @property int $quantity
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\DetailBookTours> $detailbooktours
- * @property-read int|null $detailbooktours_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Orders> $orders
- * @property-read int|null $orders_count
- * @property-read \App\Models\Tours $tours
- * @method static \Illuminate\Database\Eloquent\Builder|BookTours newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|BookTours newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|BookTours query()
- * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereBookDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BookTours wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereQuantity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereTourId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BookTours whereUpdatedAt($value)
- */
-	class BookTours extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * 
- *
- * @property int $id
- * @property int $refund_price
- * @property string $reason_cancel
- * @property string|null $date_cancel
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Orders> $orders
- * @property-read int|null $orders_count
- * @property-read \App\Models\Tours|null $tours
- * @method static \Illuminate\Database\Eloquent\Builder|CancelTours newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CancelTours newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CancelTours query()
- * @method static \Illuminate\Database\Eloquent\Builder|CancelTours whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CancelTours whereDateCancel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CancelTours whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CancelTours whereReasonCancel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CancelTours whereRefundPrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CancelTours whereUpdatedAt($value)
- */
-	class CancelTours extends \Eloquent {}
+	class FooterGridThree extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -109,21 +236,21 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
- * @property int $level_price
+ * @property string $url
+ * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Customers> $customers
- * @property-read int|null $customers_count
- * @method static \Illuminate\Database\Eloquent\Builder|CustomTypes newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CustomTypes newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CustomTypes query()
- * @method static \Illuminate\Database\Eloquent\Builder|CustomTypes whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CustomTypes whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CustomTypes whereLevelPrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CustomTypes whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|CustomTypes whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridTwo newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridTwo newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridTwo query()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridTwo whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridTwo whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridTwo whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridTwo whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridTwo whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterGridTwo whereUrl($value)
  */
-	class CustomTypes extends \Eloquent {}
+	class FooterGridTwo extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -131,130 +258,24 @@ namespace App\Models{
  * 
  *
  * @property int $id
- * @property string $fullname
- * @property string $sex
- * @property string $dob
- * @property string $address
- * @property string $phonenumber
- * @property string $image
- * @property int $custom_type_id
- * @property int $user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\CustomTypes $customtypes
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Orders> $orders
- * @property-read int|null $orders_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Ratings> $ratings
- * @property-read int|null $ratings_count
- * @property-read \App\Models\User $users
- * @method static \Illuminate\Database\Eloquent\Builder|Customers newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Customers newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Customers query()
- * @method static \Illuminate\Database\Eloquent\Builder|Customers whereAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Customers whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Customers whereCustomTypeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Customers whereDob($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Customers whereFullname($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Customers whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Customers whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Customers wherePhonenumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Customers whereSex($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Customers whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Customers whereUserId($value)
- */
-	class Customers extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * 
- *
- * @property int $id
+ * @property string $icon
  * @property string $name
+ * @property string $url
+ * @property int $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Departments newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Departments newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Departments query()
- * @method static \Illuminate\Database\Eloquent\Builder|Departments whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Departments whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Departments whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Departments whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterSocial newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterSocial newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterSocial query()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterSocial whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterSocial whereIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterSocial whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterSocial whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterSocial whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterSocial whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterSocial whereUrl($value)
  */
-	class Departments extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * 
- *
- * @property int $customer_id
- * @property int $book_tour_id
- * @property float $price
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\BookTours $booktours
- * @property-read \App\Models\Customers $customers
- * @method static \Illuminate\Database\Eloquent\Builder|DetailBookTours newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|DetailBookTours newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|DetailBookTours query()
- * @method static \Illuminate\Database\Eloquent\Builder|DetailBookTours whereBookTourId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailBookTours whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailBookTours whereCustomerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailBookTours wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailBookTours whereUpdatedAt($value)
- */
-	class DetailBookTours extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * 
- *
- * @property int $hotel_id
- * @property int $tour_id
- * @property string $position_room
- * @property int $quantity
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Hotels $hotels
- * @property-read \App\Models\Tours $tours
- * @method static \Illuminate\Database\Eloquent\Builder|DetailHotelTours newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|DetailHotelTours newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|DetailHotelTours query()
- * @method static \Illuminate\Database\Eloquent\Builder|DetailHotelTours whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailHotelTours whereHotelId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailHotelTours wherePositionRoom($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailHotelTours whereQuantity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailHotelTours whereTourId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailHotelTours whereUpdatedAt($value)
- */
-	class DetailHotelTours extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * 
- *
- * @property int $tour_id
- * @property int $transport_id
- * @property int $quantity_custom
- * @property string|null $note
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Tours $tours
- * @property-read \App\Models\Transportations $transportations
- * @method static \Illuminate\Database\Eloquent\Builder|DetailsTransportTours newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|DetailsTransportTours newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|DetailsTransportTours query()
- * @method static \Illuminate\Database\Eloquent\Builder|DetailsTransportTours whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailsTransportTours whereNote($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailsTransportTours whereQuantityCustom($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailsTransportTours whereTourId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailsTransportTours whereTransportId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|DetailsTransportTours whereUpdatedAt($value)
- */
-	class DetailsTransportTours extends \Eloquent {}
+	class FooterSocial extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -262,470 +283,597 @@ namespace App\Models{
  * 
  *
  * @property int $id
- * @property string $start_date
- * @property string $end_date
- * @property float $percent
+ * @property string|null $footer_grid_two_title
+ * @property string|null $footer_grid_three_title
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Discounts newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Discounts newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Discounts query()
- * @method static \Illuminate\Database\Eloquent\Builder|Discounts whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Discounts whereEndDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Discounts whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Discounts wherePercent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Discounts whereStartDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Discounts whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterTitle newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterTitle newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterTitle query()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterTitle whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterTitle whereFooterGridThreeTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterTitle whereFooterGridTwoTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterTitle whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterTitle whereUpdatedAt($value)
  */
-	class Discounts extends \Eloquent {}
+	class FooterTitle extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property int $id
- * @property string $name
- * @property string $sex
- * @property string $dob
- * @property string $phonenumber
- * @property string $certificate
- * @property string $image
- * @property float $salary
- * @property string $date_entry
- * @property int $department_id
- * @property int $user_id
+ * @property int $mahinhanh
+ * @property string $tenhinh
+ * @property string $duongdan
+ * @property int $matour
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\BlogTours> $blogtours
- * @property-read int|null $blogtours_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Task> $task
- * @property-read int|null $task_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TaskEmployees> $taskemployee
- * @property-read int|null $taskemployee_count
- * @method static \Illuminate\Database\Eloquent\Builder|Employees newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Employees newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Employees query()
- * @method static \Illuminate\Database\Eloquent\Builder|Employees whereCertificate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Employees whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Employees whereDateEntry($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Employees whereDepartmentId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Employees whereDob($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Employees whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Employees whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Employees whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Employees wherePhonenumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Employees whereSalary($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Employees whereSex($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Employees whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Employees whereUserId($value)
+ * @property-read \App\Models\Tour $tour
+ * @method static \Illuminate\Database\Eloquent\Builder|HinhAnhTour newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HinhAnhTour newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HinhAnhTour query()
+ * @method static \Illuminate\Database\Eloquent\Builder|HinhAnhTour whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HinhAnhTour whereDuongdan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HinhAnhTour whereMahinhanh($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HinhAnhTour whereMatour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HinhAnhTour whereTenhinh($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HinhAnhTour whereUpdatedAt($value)
  */
-	class Employees extends \Eloquent {}
+	class HinhAnhTour extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property int $id
- * @property string $name
- * @property string $address
- * @property string $phonenumber
- * @property string $quanlity
- * @property float $price
+ * @property int $mahoadon
+ * @property float $tongsotien
+ * @property string $trangthaithanhtoan
+ * @property string $phuongthucthanhtoan
+ * @property string|null $masothue
+ * @property string|null $tendonvi
+ * @property string|null $diachidonvi
+ * @property string|null $nguoidaidien
+ * @property int|null $maphieuhuytour
+ * @property int $maphieudattour
+ * @property int|null $makhachhang
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\DetailHotelTours> $detailHotelTours
- * @property-read int|null $detail_hotel_tours_count
- * @method static \Illuminate\Database\Eloquent\Builder|Hotels newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Hotels newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Hotels query()
- * @method static \Illuminate\Database\Eloquent\Builder|Hotels whereAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Hotels whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Hotels whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Hotels whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Hotels wherePhonenumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Hotels wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Hotels whereQuanlity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Hotels whereUpdatedAt($value)
+ * @property-read \App\Models\PhieuDatTour $phieudattour
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon query()
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon whereDiachidonvi($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon whereMahoadon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon whereMakhachhang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon whereMaphieudattour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon whereMaphieuhuytour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon whereMasothue($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon whereNguoidaidien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon wherePhuongthucthanhtoan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon whereTendonvi($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon whereTongsotien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon whereTrangthaithanhtoan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HoaDon whereUpdatedAt($value)
  */
-	class Hotels extends \Eloquent {}
+	class HoaDon extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property int $id
- * @property float $total_amount
- * @property string $status
- * @property string $payment_method
- * @property string $tax_code
- * @property string $unit_name
- * @property string $address_unit
- * @property string $representative
- * @property int|null $cancel_tours_id
- * @property int $book_tour_id
- * @property int $customer_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\BookTours $booktour
- * @property-read \App\Models\CancelTours|null $canceltours
- * @property-read \App\Models\Customers $customers
- * @method static \Illuminate\Database\Eloquent\Builder|Orders newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Orders newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Orders query()
- * @method static \Illuminate\Database\Eloquent\Builder|Orders whereAddressUnit($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Orders whereBookTourId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Orders whereCancelToursId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Orders whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Orders whereCustomerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Orders whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Orders wherePaymentMethod($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Orders whereRepresentative($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Orders whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Orders whereTaxCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Orders whereTotalAmount($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Orders whereUnitName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Orders whereUpdatedAt($value)
+ * @property int $makhachhang
+ * @property string $hoten
+ * @property string $gioitinh
+ * @property string $ngaysinh
+ * @property string $diachi
+ * @property string $sodienthoai
+ * @property string $hinhdaidien
+ * @property int|null $maloaikhachhang
+ * @property int|null $mataikhoan
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ChiTietPhieuDatTour> $chitietphieudattour
+ * @property-read int|null $chitietphieudattour_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\DanhGia> $danhgia
+ * @property-read int|null $danhgia_count
+ * @property-read \App\Models\LoaiKhachHang|null $loaikhachhang
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachHang newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachHang newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachHang query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachHang whereDiachi($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachHang whereGioitinh($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachHang whereHinhdaidien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachHang whereHoten($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachHang whereMakhachhang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachHang whereMaloaikhachhang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachHang whereMataikhoan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachHang whereNgaysinh($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachHang whereSodienthoai($value)
  */
-	class Orders extends \Eloquent {}
+	class KhachHang extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property int $id
- * @property string|null $name
- * @property float|null $salary_coefficient
+ * @property int $makhachsan
+ * @property string $tenkhachsan
+ * @property string $diachi
+ * @property string $sodienthoai
+ * @property string $chatluong
+ * @property float $giakhachsan
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Task> $task
- * @property-read int|null $task_count
- * @method static \Illuminate\Database\Eloquent\Builder|Positions newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Positions newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Positions query()
- * @method static \Illuminate\Database\Eloquent\Builder|Positions whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Positions whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Positions whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Positions whereSalaryCoefficient($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Positions whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\KhachSan_Tour> $khachsan_chuongtrinh
+ * @property-read int|null $khachsan_chuongtrinh_count
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan whereChatluong($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan whereDiachi($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan whereGiakhachsan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan whereMakhachsan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan whereSodienthoai($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan whereTenkhachsan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan whereUpdatedAt($value)
  */
-	class Positions extends \Eloquent {}
+	class KhachSan extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property int $id
- * @property string $title
- * @property string $date
- * @property string $description
- * @property int $tour_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Tours $tours
- * @method static \Illuminate\Database\Eloquent\Builder|ProgramTours newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ProgramTours newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ProgramTours query()
- * @method static \Illuminate\Database\Eloquent\Builder|ProgramTours whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProgramTours whereDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProgramTours whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProgramTours whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProgramTours whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProgramTours whereTourId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ProgramTours whereUpdatedAt($value)
+ * @property int $makhachsan
+ * @property int $matour
+ * @property string $vitriphong
+ * @property int $succhua
+ * @property-read \App\Models\KhachSan $khachsan
+ * @property-read \App\Models\Tour $tour
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan_Tour newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan_Tour newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan_Tour query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan_Tour whereMakhachsan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan_Tour whereMatour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan_Tour whereSucchua($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhachSan_Tour whereVitriphong($value)
  */
-	class ProgramTours extends \Eloquent {}
+	class KhachSan_Tour extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property int $id
- * @property string $content
- * @property int $point
- * @property int $customer_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Customers $customers
- * @method static \Illuminate\Database\Eloquent\Builder|Ratings newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Ratings newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Ratings query()
- * @method static \Illuminate\Database\Eloquent\Builder|Ratings whereContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Ratings whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Ratings whereCustomerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Ratings whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Ratings wherePoint($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Ratings whereUpdatedAt($value)
+ * @property int $makhuyenmai
+ * @property string $thoigianbatdau
+ * @property string $thoigianketthuc
+ * @property float $phantramgiam
+ * @property string|null $created_at
+ * @property string|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tour> $tour
+ * @property-read int|null $tour_count
+ * @method static \Illuminate\Database\Eloquent\Builder|KhuyenMai newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KhuyenMai newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KhuyenMai query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KhuyenMai whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhuyenMai whereMakhuyenmai($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhuyenMai wherePhantramgiam($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhuyenMai whereThoigianbatdau($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhuyenMai whereThoigianketthuc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KhuyenMai whereUpdatedAt($value)
  */
-	class Ratings extends \Eloquent {}
+	class KhuyenMai extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property int $id
- * @property string $name
+ * @property int $maloaiblog
+ * @property string $tenloaiblog
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\BlogTour> $blogtour
+ * @property-read int|null $blogtour_count
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiBlog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiBlog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiBlog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiBlog whereMaloaiblog($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiBlog whereTenloaiblog($value)
+ */
+	class LoaiBlog extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $maloaikhachhang
+ * @property string $tenloaikhachhang
+ * @property int $mucapdunggia
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\KhachHang> $khachhang
+ * @property-read int|null $khachhang_count
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiKhachHang newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiKhachHang newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiKhachHang query()
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiKhachHang whereMaloaikhachhang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiKhachHang whereMucapdunggia($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiKhachHang whereTenloaikhachhang($value)
+ */
+	class LoaiKhachHang extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $maloaitour
+ * @property string $tenloai
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tour> $tour
+ * @property-read int|null $tour_count
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiTour newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiTour newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiTour query()
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiTour whereMaloaitour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LoaiTour whereTenloai($value)
+ */
+	class LoaiTour extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $manhanvien
+ * @property string|null $hoten
+ * @property string|null $gioitinh
+ * @property string|null $ngaysinh
+ * @property string|null $sodienthoai
+ * @property string|null $bangcap
+ * @property string|null $hinhdaidien
+ * @property string|null $ngayvaolam
+ * @property int|null $tinhtrang
+ * @property int|null $maphongban
+ * @property int $mataikhoan
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\BlogTour> $blogtour
+ * @property-read int|null $blogtour_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PhanCongChucVu> $phancongchucvu
+ * @property-read int|null $phancongchucvu_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PhanCongNhanVien> $phancongnhanvien
+ * @property-read int|null $phancongnhanvien_count
+ * @property-read \App\Models\PhongBan|null $phongban
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien query()
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien whereBangcap($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien whereGioitinh($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien whereHinhdaidien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien whereHoten($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien whereManhanvien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien whereMaphongban($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien whereMataikhoan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien whereNgaysinh($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien whereNgayvaolam($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien whereSodienthoai($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhanVien whereTinhtrang($value)
+ */
+	class NhanVien extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $manhomquyen
+ * @property string $tennhomquyen
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Quyen_Nhomquyen> $quyen_nhomquyen
+ * @property-read int|null $quyen_nhomquyen_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $user
  * @property-read int|null $user_count
- * @method static \Illuminate\Database\Eloquent\Builder|Roles newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Roles newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Roles query()
- * @method static \Illuminate\Database\Eloquent\Builder|Roles whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Roles whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Roles whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Roles whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhomQuyen newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|NhomQuyen newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|NhomQuyen query()
+ * @method static \Illuminate\Database\Eloquent\Builder|NhomQuyen whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhomQuyen whereManhomquyen($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhomQuyen whereTennhomquyen($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NhomQuyen whereUpdatedAt($value)
  */
-	class Roles extends \Eloquent {}
+	class NhomQuyen extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property-read \App\Models\Employees|null $employees
- * @property-read \App\Models\Positions|null $positions
- * @method static \Illuminate\Database\Eloquent\Builder|Task newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Task newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Task query()
- */
-	class Task extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * 
- *
- * @property int $employee_id
- * @property int $tour_id
- * @property string $task_name
+ * @property int $manhanvien
+ * @property int $machucvu
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Employees $employees
- * @property-read \App\Models\Tours $tours
- * @method static \Illuminate\Database\Eloquent\Builder|TaskEmployees newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TaskEmployees newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TaskEmployees query()
- * @method static \Illuminate\Database\Eloquent\Builder|TaskEmployees whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TaskEmployees whereEmployeeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TaskEmployees whereTaskName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TaskEmployees whereTourId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TaskEmployees whereUpdatedAt($value)
+ * @property-read \App\Models\ChucVu $chucvu
+ * @property-read \App\Models\NhanVien $nhanvien
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongChucVu newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongChucVu newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongChucVu query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongChucVu whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongChucVu whereMachucvu($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongChucVu whereManhanvien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongChucVu whereUpdatedAt($value)
  */
-	class TaskEmployees extends \Eloquent {}
+	class PhanCongChucVu extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property int $id
- * @property string $name
- * @property string $description
+ * @property int $manhanvien
+ * @property int $matour
+ * @property string $nhiemvu
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TourDetails> $tourdetails
- * @property-read int|null $tourdetails_count
- * @method static \Illuminate\Database\Eloquent\Builder|TourAttractions newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TourAttractions newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TourAttractions query()
- * @method static \Illuminate\Database\Eloquent\Builder|TourAttractions whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourAttractions whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourAttractions whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourAttractions whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourAttractions whereUpdatedAt($value)
+ * @property-read \App\Models\NhanVien $nhanvien
+ * @property-read \App\Models\Tour $tour
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongNhanVien newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongNhanVien newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongNhanVien query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongNhanVien whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongNhanVien whereManhanvien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongNhanVien whereMatour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongNhanVien whereNhiemvu($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhanCongNhanVien whereUpdatedAt($value)
  */
-	class TourAttractions extends \Eloquent {}
+	class PhanCongNhanVien extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property string $start_date
- * @property string $end_date
- * @property int $price
- * @property int $tour_id
- * @property int $tour_attraction_id
+ * @property int $maphieudattour
+ * @property int $matour
+ * @property string $ngaydattour
+ * @property float $tongtienphieudattour
+ * @property string $trangthaidattour
+ * @property int $tongsoluong
+ * @property string $nguoidaidien
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ChiTietPhieuDatTour> $chitietphieudattour
+ * @property-read int|null $chitietphieudattour_count
+ * @property-read \App\Models\Tour $tour
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuDatTour newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuDatTour newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuDatTour query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuDatTour whereMaphieudattour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuDatTour whereMatour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuDatTour whereNgaydattour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuDatTour whereNguoidaidien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuDatTour whereTongsoluong($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuDatTour whereTongtienphieudattour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuDatTour whereTrangthaidattour($value)
+ */
+	class PhieuDatTour extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $maphieuhuytour
+ * @property int $sotienhoan
+ * @property string $lydohuy
+ * @property string|null $ngayhuy
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuHuyTour newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuHuyTour newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuHuyTour query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuHuyTour whereLydohuy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuHuyTour whereMaphieuhuytour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuHuyTour whereNgayhuy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhieuHuyTour whereSotienhoan($value)
+ */
+	class PhieuHuyTour extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $maphongban
+ * @property string $tenphongban
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TourAttractions> $tourattractions
- * @property-read int|null $tourattractions_count
- * @property-read \App\Models\Tours $tours
- * @method static \Illuminate\Database\Eloquent\Builder|TourDetails newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TourDetails newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TourDetails query()
- * @method static \Illuminate\Database\Eloquent\Builder|TourDetails whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourDetails whereEndDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourDetails wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourDetails whereStartDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourDetails whereTourAttractionId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourDetails whereTourId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourDetails whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\NhanVien> $nhanvien
+ * @property-read int|null $nhanvien_count
+ * @method static \Illuminate\Database\Eloquent\Builder|PhongBan newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhongBan newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhongBan query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhongBan whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhongBan whereMaphongban($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhongBan whereTenphongban($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhongBan whereUpdatedAt($value)
  */
-	class TourDetails extends \Eloquent {}
+	class PhongBan extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property int $id
- * @property string $name
- * @property string $image
- * @property int $tour_id
+ * @property int $maphuongtien
+ * @property string $tenphuongtien
+ * @property int $sochongoi
+ * @property string $sodienthoai
+ * @property int $giaphuongtien
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Tours $tours
- * @method static \Illuminate\Database\Eloquent\Builder|TourImages newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TourImages newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TourImages query()
- * @method static \Illuminate\Database\Eloquent\Builder|TourImages whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourImages whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourImages whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourImages whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourImages whereTourId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourImages whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PhuongTien_Tour> $phuongtientheochuongtrinh
+ * @property-read int|null $phuongtientheochuongtrinh_count
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien whereGiaphuongtien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien whereMaphuongtien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien whereSochongoi($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien whereSodienthoai($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien whereTenphuongtien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien whereUpdatedAt($value)
  */
-	class TourImages extends \Eloquent {}
+	class PhuongTien extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TourDetails> $tourdetails
- * @property-read int|null $tourdetails_count
- * @method static \Illuminate\Database\Eloquent\Builder|TourPlaces newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TourPlaces newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TourPlaces query()
+ * @property int $matour
+ * @property int $maphuongtien
+ * @property int $soluonghanhkhach
+ * @property string $ghichu
+ * @property-read \App\Models\PhuongTien $phuongtien
+ * @property-read \App\Models\Tour $tour
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien_Tour newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien_Tour newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien_Tour query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien_Tour whereGhichu($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien_Tour whereMaphuongtien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien_Tour whereMatour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PhuongTien_Tour whereSoluonghanhkhach($value)
  */
-	class TourPlaces extends \Eloquent {}
+	class PhuongTien_Tour extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property int $id
- * @property string $name
+ * @property int $maquyen
+ * @property string $tenquyen
+ * @property string $mota
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tours> $tours
- * @property-read int|null $tours_count
- * @method static \Illuminate\Database\Eloquent\Builder|TourTypes newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TourTypes newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|TourTypes query()
- * @method static \Illuminate\Database\Eloquent\Builder|TourTypes whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourTypes whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourTypes whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|TourTypes whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Quyen_Nhomquyen> $quyen_nhomquyen
+ * @property-read int|null $quyen_nhomquyen_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen whereMaquyen($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen whereMota($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen whereTenquyen($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen whereUpdatedAt($value)
  */
-	class TourTypes extends \Eloquent {}
+	class Quyen extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property int $id
- * @property string $name
+ * @property int $maquyen
+ * @property int $manhomquyen
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\NhomQuyen $nhomquyen
+ * @property-read \App\Models\Quyen $quyen
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen_Nhomquyen newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen_Nhomquyen newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen_Nhomquyen query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen_Nhomquyen whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen_Nhomquyen whereManhomquyen($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen_Nhomquyen whereMaquyen($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Quyen_Nhomquyen whereUpdatedAt($value)
+ */
+	class Quyen_Nhomquyen extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscriber newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscriber newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscriber query()
+ */
+	class Subscriber extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $matour
+ * @property string $tentour
  * @property string $slug
- * @property string $description
- * @property int $status
- * @property string $image
- * @property string $place_tour
- * @property string $tour_time
- * @property int $price
- * @property int $tour_type_id
- * @property int|null $discount_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\BookTours> $booktours
- * @property-read int|null $booktours_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\DetailHotelTours> $detailhoteltours
- * @property-read int|null $detailhoteltours_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProgramTours> $programtours
- * @property-read int|null $programtours_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TaskEmployees> $taskemployees
- * @property-read int|null $taskemployees_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TourDetails> $tourdetails
- * @property-read int|null $tourdetails_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TourImages> $tourimages
- * @property-read int|null $tourimages_count
- * @property-read \App\Models\TourTypes|null $tourtypes
- * @method static \Illuminate\Database\Eloquent\Builder|Tours newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Tours newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Tours query()
- * @method static \Illuminate\Database\Eloquent\Builder|Tours whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tours whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tours whereDiscountId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tours whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tours whereImage($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tours whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tours wherePlaceTour($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tours wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tours whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tours whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tours whereTourTime($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tours whereTourTypeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tours whereUpdatedAt($value)
+ * @property string $motatour
+ * @property int $tinhtrang
+ * @property string $hinhdaidien
+ * @property string $noikhoihanh
+ * @property string|null $thoigiandi
+ * @property int $giatour
+ * @property int $maloaitour
+ * @property int|null $makhuyenmai
+ * @property string|null $created_at
+ * @property string|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ChiTietTour> $chitiettour
+ * @property-read int|null $chitiettour_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ChuongTrinhTour> $chuongtrinhtour
+ * @property-read int|null $chuongtrinhtour_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PhieuDatTour> $dattour
+ * @property-read int|null $dattour_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\HinhAnhTour> $hinhanhtour
+ * @property-read int|null $hinhanhtour_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\KhachSan_Tour> $khachsan_tour
+ * @property-read int|null $khachsan_tour_count
+ * @property-read \App\Models\KhuyenMai|null $khuyenmai
+ * @property-read \App\Models\LoaiTour $loaitour
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\PhuongTien_Tour> $phuongtien_tour
+ * @property-read int|null $phuongtien_tour_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour whereGiatour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour whereHinhdaidien($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour whereMakhuyenmai($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour whereMaloaitour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour whereMatour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour whereMotatour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour whereNoikhoihanh($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour whereTentour($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour whereThoigiandi($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour whereTinhtrang($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tour whereUpdatedAt($value)
  */
-	class Tours extends \Eloquent {}
+	class Tour extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
  * 
  *
- * @property int $id
- * @property string $name
- * @property string $phonenumber
- * @property float $price
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\DetailsTransportTours> $detailstransporttours
- * @property-read int|null $detailstransporttours_count
- * @method static \Illuminate\Database\Eloquent\Builder|Transportations newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Transportations newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Transportations query()
- * @method static \Illuminate\Database\Eloquent\Builder|Transportations whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transportations whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transportations whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transportations wherePhonenumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transportations wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Transportations whereUpdatedAt($value)
- */
-	class Transportations extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * 
- *
- * @property int $id
- * @property string|null $username
+ * @property int $mataikhoan
+ * @property string $tentaikhoan
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
- * @property string $status
+ * @property string $trangthai
  * @property string|null $remember_token
- * @property int $role_id
+ * @property int $manhomquyen
  * @property string|null $google_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Customers> $customers
- * @property-read int|null $customers_count
+ * @property-read \App\Models\KhachHang|null $khachhang
+ * @property-read \App\Models\NhanVien|null $nhanVien
+ * @property-read \App\Models\NhomQuyen $nhomquyen
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
- * @property-read \App\Models\Roles $role
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
@@ -736,13 +884,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereGoogleId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereManhomquyen($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereMataikhoan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereRoleId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTentaikhoan($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTrangthai($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  */
 	class User extends \Eloquent {}
 }

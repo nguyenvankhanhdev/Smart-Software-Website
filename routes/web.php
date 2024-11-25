@@ -11,7 +11,7 @@ Route::get('/', [HomeController::class,"index"])->name('user.dashboard');
 
 
 
-Route::get('/tour-detail', [TourController::class, 'index'])->name('tour.detail');
+Route::get('/tour-detail/{slug}', [TourController::class, 'detailsTour'])->name('tour.detail');
 
 // Route::get('/google-sign-in', [
 //     LoginController::class,

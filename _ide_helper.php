@@ -17202,6 +17202,129 @@ namespace Illuminate\Support\Facades {
             }
     }
 
+namespace Laravel\Socialite\Facades {
+            /**
+     * 
+     *
+     * @method array getScopes()
+     * @method \Laravel\Socialite\Contracts\Provider scopes(array|string $scopes)
+     * @method \Laravel\Socialite\Contracts\Provider setScopes(array|string $scopes)
+     * @method \Laravel\Socialite\Contracts\Provider redirectUrl(string $url)
+     * @see \Laravel\Socialite\SocialiteManager
+     */        class Socialite {
+                    /**
+         * Get a driver instance.
+         *
+         * @param string $driver
+         * @return mixed 
+         * @static 
+         */        public static function with($driver)
+        {
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->with($driver);
+        }
+                    /**
+         * Build an OAuth 2 provider instance.
+         *
+         * @param string $provider
+         * @param array $config
+         * @return \Laravel\Socialite\Two\AbstractProvider 
+         * @static 
+         */        public static function buildProvider($provider, $config)
+        {
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->buildProvider($provider, $config);
+        }
+                    /**
+         * Format the server configuration.
+         *
+         * @param array $config
+         * @return array 
+         * @static 
+         */        public static function formatConfig($config)
+        {
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->formatConfig($config);
+        }
+                    /**
+         * Forget all of the resolved driver instances.
+         *
+         * @return \Laravel\Socialite\SocialiteManager 
+         * @static 
+         */        public static function forgetDrivers()
+        {
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->forgetDrivers();
+        }
+                    /**
+         * Set the container instance used by the manager.
+         *
+         * @param \Illuminate\Contracts\Container\Container $container
+         * @return \Laravel\Socialite\SocialiteManager 
+         * @static 
+         */        public static function setContainer($container)
+        {
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->setContainer($container);
+        }
+                    /**
+         * Get the default driver name.
+         *
+         * @return string 
+         * @throws \InvalidArgumentException
+         * @static 
+         */        public static function getDefaultDriver()
+        {
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->getDefaultDriver();
+        }
+                    /**
+         * Get a driver instance.
+         *
+         * @param string|null $driver
+         * @return mixed 
+         * @throws \InvalidArgumentException
+         * @static 
+         */        public static function driver($driver = null)
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->driver($driver);
+        }
+                    /**
+         * Register a custom driver creator Closure.
+         *
+         * @param string $driver
+         * @param \Closure $callback
+         * @return \Laravel\Socialite\SocialiteManager 
+         * @static 
+         */        public static function extend($driver, $callback)
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->extend($driver, $callback);
+        }
+                    /**
+         * Get all of the created "drivers".
+         *
+         * @return array 
+         * @static 
+         */        public static function getDrivers()
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->getDrivers();
+        }
+                    /**
+         * Get the container instance used by the manager.
+         *
+         * @return \Illuminate\Contracts\Container\Container 
+         * @static 
+         */        public static function getContainer()
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->getContainer();
+        }
+            }
+    }
+
 namespace Flasher\Laravel\Facade {
             /**
      * 
@@ -17660,6 +17783,183 @@ namespace Spatie\LaravelIgnition\Facades {
             }
     }
 
+namespace Yajra\DataTables\Facades {
+            /**
+     * 
+     *
+     * @mixin \Yajra\DataTables\DataTables
+     * @see \Yajra\DataTables\DataTables
+     */        class DataTables {
+                    /**
+         * Make a DataTable instance from source.
+         * 
+         * Alias of make for backward compatibility.
+         *
+         * @param object $source
+         * @return \Yajra\DataTables\DataTableAbstract 
+         * @throws \Exception
+         * @static 
+         */        public static function of($source)
+        {
+                        return \Yajra\DataTables\DataTables::of($source);
+        }
+                    /**
+         * Make a DataTable instance from source.
+         *
+         * @param object $source
+         * @return \Yajra\DataTables\DataTableAbstract 
+         * @throws \Yajra\DataTables\Exceptions\Exception
+         * @static 
+         */        public static function make($source)
+        {
+                        return \Yajra\DataTables\DataTables::make($source);
+        }
+                    /**
+         * Get request object.
+         *
+         * @return \Yajra\DataTables\Utilities\Request 
+         * @static 
+         */        public static function getRequest()
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->getRequest();
+        }
+                    /**
+         * Get config instance.
+         *
+         * @return \Yajra\DataTables\Utilities\Config 
+         * @static 
+         */        public static function getConfig()
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->getConfig();
+        }
+                    /**
+         * DataTables using Query.
+         *
+         * @param \Illuminate\Contracts\Database\Query\Builder $builder
+         * @return \Yajra\DataTables\QueryDataTable 
+         * @static 
+         */        public static function query($builder)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->query($builder);
+        }
+                    /**
+         * DataTables using Eloquent Builder.
+         *
+         * @param \Illuminate\Contracts\Database\Eloquent\Builder $builder
+         * @return \Yajra\DataTables\EloquentDataTable 
+         * @static 
+         */        public static function eloquent($builder)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->eloquent($builder);
+        }
+                    /**
+         * DataTables using Collection.
+         *
+         * @param \Illuminate\Support\Collection<array-key, array>|array $collection
+         * @return \Yajra\DataTables\CollectionDataTable 
+         * @static 
+         */        public static function collection($collection)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->collection($collection);
+        }
+                    /**
+         * DataTables using Collection.
+         *
+         * @param \Illuminate\Http\Resources\Json\AnonymousResourceCollection<array-key, array>|array $resource
+         * @return \Yajra\DataTables\ApiResourceDataTable|\Yajra\DataTables\DataTableAbstract 
+         * @static 
+         */        public static function resource($resource)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->resource($resource);
+        }
+                    /**
+         * Get html builder instance.
+         *
+         * @return \Yajra\DataTables\Html\Builder 
+         * @throws \Yajra\DataTables\Exceptions\Exception
+         * @static 
+         */        public static function getHtmlBuilder()
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->getHtmlBuilder();
+        }
+                    /**
+         * 
+         *
+         * @param string $engine
+         * @param string $parent
+         * @return void 
+         * @throws \Yajra\DataTables\Exceptions\Exception
+         * @static 
+         */        public static function validateDataTable($engine, $parent)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        $instance->validateDataTable($engine, $parent);
+        }
+                    /**
+         * 
+         *
+         * @param string $engine
+         * @param string $parent
+         * @return void 
+         * @throws \Yajra\DataTables\Exceptions\Exception
+         * @static 
+         */        public static function throwInvalidEngineException($engine, $parent)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        $instance->throwInvalidEngineException($engine, $parent);
+        }
+                    /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */        public static function macro($name, $macro)
+        {
+                        \Yajra\DataTables\DataTables::macro($name, $macro);
+        }
+                    /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */        public static function mixin($mixin, $replace = true)
+        {
+                        \Yajra\DataTables\DataTables::mixin($mixin, $replace);
+        }
+                    /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */        public static function hasMacro($name)
+        {
+                        return \Yajra\DataTables\DataTables::hasMacro($name);
+        }
+                    /**
+         * Flush the existing macros.
+         *
+         * @return void 
+         * @static 
+         */        public static function flushMacros()
+        {
+                        \Yajra\DataTables\DataTables::flushMacros();
+        }
+            }
+    }
+
 namespace Yoeunes\Toastr\Facades {
             /**
      * 
@@ -17791,6 +18091,47 @@ namespace Illuminate\Http {
          */        public static function hasValidSignatureWhileIgnoring($ignoreQuery = [], $absolute = true)
         {
                         return \Illuminate\Http\Request::hasValidSignatureWhileIgnoring($ignoreQuery, $absolute);
+        }
+            }
+    }
+
+namespace Yajra\DataTables {
+            /**
+     * 
+     *
+     * @property-read mixed $transformer
+     * @property-read mixed $serializer
+     * @see https://github.com/yajra/laravel-datatables-fractal for transformer related methods.
+     */        class DataTableAbstract {
+                    /**
+         * 
+         *
+         * @see \Yajra\DataTables\FractalServiceProvider::registerMacro()
+         * @param mixed $transformer
+         * @static 
+         */        public static function setTransformer($transformer)
+        {
+                        return \Yajra\DataTables\DataTableAbstract::setTransformer($transformer);
+        }
+                    /**
+         * 
+         *
+         * @see \Yajra\DataTables\FractalServiceProvider::registerMacro()
+         * @param mixed $transformer
+         * @static 
+         */        public static function addTransformer($transformer)
+        {
+                        return \Yajra\DataTables\DataTableAbstract::addTransformer($transformer);
+        }
+                    /**
+         * 
+         *
+         * @see \Yajra\DataTables\FractalServiceProvider::registerMacro()
+         * @param mixed $serializer
+         * @static 
+         */        public static function setSerializer($serializer)
+        {
+                        return \Yajra\DataTables\DataTableAbstract::setSerializer($serializer);
         }
             }
     }
@@ -21292,8 +21633,10 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
+            class Socialite extends \Laravel\Socialite\Facades\Socialite {}
             class Flasher extends \Flasher\Laravel\Facade\Flasher {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
+            class DataTables extends \Yajra\DataTables\Facades\DataTables {}
             class Toastr extends \Yoeunes\Toastr\Facades\Toastr {}
     }
 

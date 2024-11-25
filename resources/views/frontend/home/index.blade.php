@@ -12,6 +12,7 @@
         @include('frontend.home.component.destination')
 
         @include('frontend.home.component.aboutOne')
+
         @include('frontend.home.component.toursPopular')
 
     </div>
