@@ -16,16 +16,21 @@
             <li class="menu-header">Ecommerce</li>
 
             <li
-                class="dropdown {{ setActive(['admin.category.*', 'admin.sub-category.*', 'admin.child-category.*']) }}">
+                class="dropdown {{ setActive(['admin.category.*', 'admin.sub-category.*', 'admin.child-category.*','admin.loaiblog.*','admin.loaikh.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-list"></i>
-                    <span>Manage Categories</span></a>
+                    <span>Quản lý loại</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ setActive(['admin.category.*']) }}"><a class="nav-link"
-                            href="">Category</a></li>
+                    <li class="{{ setActive(['admin.loaikh.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.loaikh.index') }}">Loại khách hàng</a></li>
+
                     <li class="{{ setActive(['admin.sub-category.*']) }}"><a class="nav-link"
-                            href="">Sub Category</a></li>
+                            href="{{ route('admin.loaitour.index') }}">Loại Tour</a></li>
+
+                    <li class="{{ setActive(['admin.loaiblog.*']) }}"><a class="nav-link"
+                            href="{{ route('admin.loaiblog.index') }}">Loại Blog</a></li>
+
                     <li class="{{ setActive(['admin.child-category.*']) }}"> <a class="nav-link"
-                            href="">Child Category</a></li>
+                            href="{{ route('admin.hoadon.index') }}">Hóa đơn </a></li>
 
                 </ul>
             </li>
@@ -43,8 +48,7 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-box"></i>
                     <span>Manage Products</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ setActive(['admin.brand.*']) }}"><a class="nav-link"
-                            href="">Brands</a></li>
+                    <li class="{{ setActive(['admin.brand.*']) }}"><a class="nav-link" href="">Brands</a></li>
                     <li
                         class="{{ setActive([
                             'admin.products.*',
@@ -55,13 +59,13 @@
                         ]) }}">
                         <a class="nav-link" href="">Products</a>
                     </li>
-                    <li class="{{ setActive(['admin.seller-products.*']) }}"><a class="nav-link"
-                            href="">Seller Products</a></li>
+                    <li class="{{ setActive(['admin.seller-products.*']) }}"><a class="nav-link" href="">Seller
+                            Products</a></li>
                     <li class="{{ setActive(['admin.seller-pending-products.*']) }}"><a class="nav-link"
                             href="">Seller Pending Products</a></li>
 
-                    <li class="{{ setActive(['admin.reviews.*']) }}"><a class="nav-link"
-                            href="">Product Reviews</a></li>
+                    <li class="{{ setActive(['admin.reviews.*']) }}"><a class="nav-link" href="">Product
+                            Reviews</a></li>
 
                 </ul>
             </li>
@@ -82,32 +86,32 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-cart-plus"></i>
                     <span>Orders</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ setActive(['admin.order.*']) }}"><a class="nav-link"
-                            href="">All Orders</a></li>
-                    <li class="{{ setActive(['admin.pending-orders']) }}"><a class="nav-link"
-                            href="">All Pending Orders</a></li>
-                    <li class="{{ setActive(['admin.processed-orders']) }}"><a class="nav-link"
-                            href="">All processed Orders</a></li>
-                    <li class="{{ setActive(['admin.dropped-off']) }}"><a class="nav-link"
-                            href="">All Dropped Off Orders</a></li>
+                    <li class="{{ setActive(['admin.order.*']) }}"><a class="nav-link" href="">All Orders</a>
+                    </li>
+                    <li class="{{ setActive(['admin.pending-orders']) }}"><a class="nav-link" href="">All
+                            Pending Orders</a></li>
+                    <li class="{{ setActive(['admin.processed-orders']) }}"><a class="nav-link" href="">All
+                            processed Orders</a></li>
+                    <li class="{{ setActive(['admin.dropped-off']) }}"><a class="nav-link" href="">All Dropped
+                            Off Orders</a></li>
 
-                    <li class="{{ setActive(['admin.shipped-orders']) }}"><a class="nav-link"
-                            href="">All Shipped Orders</a></li>
+                    <li class="{{ setActive(['admin.shipped-orders']) }}"><a class="nav-link" href="">All
+                            Shipped Orders</a></li>
                     <li class="{{ setActive(['admin.out-for-delivery-orders']) }}"><a class="nav-link"
                             href="">All Out For Delivery Orders</a></li>
 
 
-                    <li class="{{ setActive(['admin.delivered-orders']) }}"><a class="nav-link"
-                            href="">All Delivered Orders</a></li>
+                    <li class="{{ setActive(['admin.delivered-orders']) }}"><a class="nav-link" href="">All
+                            Delivered Orders</a></li>
 
-                    <li class="{{ setActive(['admin.canceled-orders']) }}"><a class="nav-link"
-                            href="">All Canceled Orders</a></li>
+                    <li class="{{ setActive(['admin.canceled-orders']) }}"><a class="nav-link" href="">All
+                            Canceled Orders</a></li>
 
                 </ul>
             </li>
 
-            <li class="{{ setActive(['admin.transaction']) }}"><a class="nav-link"
-                    href=""><i class="fas fa-money-bill-alt"></i>
+            <li class="{{ setActive(['admin.transaction']) }}"><a class="nav-link" href=""><i
+                        class="fas fa-money-bill-alt"></i>
                     <span>Transactions</span></a>
             </li>
 
@@ -121,12 +125,12 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Ecommerce</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ setActive(['admin.vendor-profile.*']) }}"><a class="nav-link"
-                            href="">Flash Sale</a></li>
-                    <li class="{{ setActive(['admin.coupons.*']) }}"><a class="nav-link"
-                            href="">Coupons</a></li>
-                    <li class="{{ setActive(['admin.shipping-rule.*']) }}"><a class="nav-link"
-                            href="">Shipping Rule</a></li>
+                    <li class="{{ setActive(['admin.vendor-profile.*']) }}"><a class="nav-link" href="">Flash
+                            Sale</a></li>
+                    <li class="{{ setActive(['admin.coupons.*']) }}"><a class="nav-link" href="">Coupons</a>
+                    </li>
+                    <li class="{{ setActive(['admin.shipping-rule.*']) }}"><a class="nav-link" href="">Shipping
+                            Rule</a></li>
                     <li class="{{ setActive(['admin.vendor-profile.*']) }}"><a class="nav-link"
                             href="">Vendor Profile</a></li>
                     <li class="{{ setActive(['admin.payment-settings.*']) }}"><a class="nav-link"
@@ -159,24 +163,24 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-cog"></i>
                     <span>Manage Website</span></a>
                 <ul class="dropdown-menu">
-                    <li class="{{ setActive(['admin.slider.*']) }}"><a class="nav-link"
-                            href="">Slider</a></li>
+                    <li class="{{ setActive(['admin.slider.*']) }}"><a class="nav-link" href="">Slider</a>
+                    </li>
 
-                    <li class="{{ setActive(['admin.slider.*']) }}"><a class="nav-link"
-                            href="">Home Page Setting</a></li>
+                    <li class="{{ setActive(['admin.slider.*']) }}"><a class="nav-link" href="">Home Page
+                            Setting</a></li>
 
                     <li class="{{ setActive(['admin.vendor-condition.index']) }}"><a class="nav-link"
                             href="">Vendor Condition</a></li>
-                    <li class="{{ setActive(['admin.about.index']) }}"><a class="nav-link"
-                            href="">About page</a></li>
+                    <li class="{{ setActive(['admin.about.index']) }}"><a class="nav-link" href="">About
+                            page</a></li>
                     <li class="{{ setActive(['admin.terms-and-conditions.index']) }}"><a class="nav-link"
                             href="">Terms Page</a></li>
 
                 </ul>
             </li>
 
-            <li><a class="nav-link {{ setActive(['admin.advertisement.*']) }}"
-                    href=""><i class="fas fa-ad"></i>
+            <li><a class="nav-link {{ setActive(['admin.advertisement.*']) }}" href=""><i
+                        class="fas fa-ad"></i>
                     <span>Advertisement</span></a></li>
 
             <li
@@ -187,15 +191,14 @@
 
                     <li class="{{ setActive(['admin.blog-category.*']) }}"><a class="nav-link"
                             href="">Categories</a></li>
-                    <li class="{{ setActive(['admin.blog.*']) }}"><a class="nav-link"
-                            href="">Blogs</a></li>
+                    <li class="{{ setActive(['admin.blog.*']) }}"><a class="nav-link" href="">Blogs</a></li>
                     <li class="{{ setActive(['admin.blog-comments.index']) }}"><a class="nav-link"
                             href="">Blog Comments</a></li>
                 </ul>
             </li>
 
-            <li><a class="nav-link {{ setActive(['admin.messages.index']) }}"
-                    href=""><i class="fas fa-user"></i>
+            <li><a class="nav-link {{ setActive(['admin.messages.index']) }}" href=""><i
+                        class="fas fa-user"></i>
                     <span>Messages</span></a></li>
 
 
@@ -246,8 +249,8 @@
                     <li class="{{ setActive(['admin.vendor-requests.index']) }}"><a class="nav-link"
                             href="">Pending vendors</a></li>
 
-                    <li class="{{ setActive(['admin.admin-list.index']) }}"><a class="nav-link"
-                            href="">Admin Lists</a></li>
+                    <li class="{{ setActive(['admin.admin-list.index']) }}"><a class="nav-link" href="">Admin
+                            Lists</a></li>
 
                     <li class="{{ setActive(['admin.manage-user.index']) }}"><a class="nav-link"
                             href="">Manage user</a></li>
@@ -256,8 +259,8 @@
             </li>
 
 
-            <li><a class="nav-link {{ setActive(['admin.subscribers.*']) }}"
-                    href=""><i class="fas fa-user"></i>
+            <li><a class="nav-link {{ setActive(['admin.subscribers.*']) }}" href=""><i
+                        class="fas fa-user"></i>
                     <span>Subscribers</span></a></li>
 
             <li><a class="nav-link" href=""><i class="fas fa-wrench"></i>
