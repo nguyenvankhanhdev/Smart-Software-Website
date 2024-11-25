@@ -9,131 +9,86 @@ use Exception;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+
 use App\Providers\RouteServiceProvider;
 use Laravel\Sanctum\PersonalAccessToken;
-
 use Laravel\Socialite\Facades\Socialite;
-use Log;
 
+use App\Http\Requests\LoginRequest;
+
+use Illuminate\Support\Facades\Hash;
+
+use Log;
 
 class LoginController extends Controller
 {
 
-    public function index()
-    {
-        return view('auth.login');
-    }
-
-    public function getGoogleSignInUrl()
-    {
-        return Socialite::driver('google')->redirect();
-    }
-    public function loginCallback() {}
-
-
-
     public function login(LoginRequest $request)
     {
+
+
         Auth::guard('web')->logout();
 
-        try {
-            $user = Socialite::driver('google')->user();
-            $finduser = User::where('google_id', $user->id)->first();
-            if ($finduser) {
-                Auth::login($finduser);
-                Session::put('user', $finduser);
-                return redirect()->route('home')->with('success', 'Đăng nhập thành công');
-            } else {
-                $newUser = User::create([
-                    'tentaikhoan' => $user->name,
-                    'email' => $user->email,
-                    'google_id' => $user->id,
-                    'matkhau' => bcrypt('123456dumy'),
-                    'trangthai' => 'Hoạt động',
-                    'manhomquyen' => '1',
-                ]);
-                Auth::login($newUser);
-                Session::put('user', $newUser);
-                return redirect()->route('home')->with('success', 'Đăng nhập thành công');
-            }
-        } catch (Exception $e) {
-            dd($e->getMessage());
-        }
         $request->session()->regenerateToken();
 
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        Log::info('Admin login '. $request->user()->role->name);
-        if ($request->user()->role->name === 'admin') {
-            Log::info('Admin login '. $request->user());
+        Log::info(Auth::user());
+
+        if ($request->user()->nhomquyen->tennhomquyen === 'Admin') {
+
             toastr()->success('Đăng nhập thành công');
+
             return redirect()->route('admin.dashboard');
         }
+
         toastr()->success('Đăng nhập thành công');
         return redirect()->intended(RouteServiceProvider::HOME);
     }
+
+
     public function logout(Request $request)
     {
         Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        toastr()->success('Đăng xuất thành công');
+
+        return redirect()->route('user.dashboard');
+    }
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
     }
 
-    public function register(Request $request)
-    {
-        Log::info('Register method started');
-
+    public function handleGoogleCallback(){
         try {
-            $validator = Validator::make($request->all(), [
-                'name' => 'required|string',
-                'password' => 'required|string',
-                'email' => 'required|email|unique:users,email',
-            ]);
-
-            if ($validator->fails()) {
-                Log::error('Validation failed', $validator->errors()->toArray());
-                return redirect()->back()->withErrors($validator)->withInput();
+            $google_user = Socialite::driver('google')->user();
+            $user = User::where('google_id', $google_user->getId())->first();
+            if (!$user) {
+                $newUser = new User();
+                $newUser->tentaikhoan = $google_user->getName();
+                $newUser->email = $google_user->getEmail();
+                $newUser->google_id = $google_user->getId();
+                $newUser->trangthai = 1;
+                $newUser->manhomquyen = 2;
+                $newUser->save();
+                Auth::login($newUser);
+                toastr()->success('Đăng nhập thành công');
+                return redirect()->intended(RouteServiceProvider::HOME);
+            } else {
+                toastr()->success('Đăng nhập thành công');
+                Auth::login($user);
+                return redirect()->intended(RouteServiceProvider::HOME);
             }
-
-            $user = new User();
-            $user->tentaikhoan = $request->name;
-            $user->email = $request->email;
-            $user->matkhau = $request->password;
-            $user->manhomquyen = 1;
-            $user->trangthai = "Hoạt động";
-            $user->save();
-
-            Log::info('User created with ID:', ['user_id' => $user->id]);
-
-            // $nhanvien = new NhanVien();
-            // $nhanvien->hoten = $request->name;
-            // $nhanvien->gioitinh = null;
-            // $nhanvien->ngaysinh = now();
-            // $nhanvien->sodienthoai = "0211";
-            // $nhanvien->ngayvaolam = now();
-            // $nhanvien->hinhdaidien = null;
-            // $nhanvien->luong = 0;
-            // $nhanvien->maphongban = 1;
-            // $nhanvien->mataikhoan = $user->id;
-            // $nhanvien->save();
-
-            // \Log::info('NhanVien created successfully');
-            Session::put('success', 'Đăng kí thành công');
-            return redirect()->route('login_view');
-        } catch (\Throwable $th) {
-            Log::error('Error in registration process:', ['error' => $th->getMessage()]);
-            return redirect()->back()->with('error', $th->getMessage());
+        } catch (\Exception $e) {
+            dd("Something wrong! " . $e->getMessage());
         }
     }
 
-
-//     public function create_Info($mataikhoan) {
-//         $request->session()->invalidate();
-
-//         $request->session()->regenerateToken();
-//         toastr()->success('Đăng xuất thành công');
-//         return redirect()->route('user.dashboard');
-//     }
-// }
 }

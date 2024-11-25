@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('username')->nullable();
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('mataikhoan');
+            $table->string('tentaikhoan');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('status');
+            $table->string('matkhau');
+            $table->string('trangthai');
             $table->rememberToken();
-            $table->integer('role_id')->unsigned();
+            $table->integer('manhomquyen')->unsigned() ;
             $table->string('google_id')->nullable();
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('manhomquyen')->references('manhomquyen')->on('nhomquyen')->onDelete('cascade');
             $table->timestamps();
         });
     }

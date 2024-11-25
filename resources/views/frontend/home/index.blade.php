@@ -11,6 +11,7 @@
         {{-- @include('frontend.home.component.destination-two') --}}
 
         @include('frontend.home.component.aboutOne')
+
         @include('frontend.home.component.toursPopular')
         @include('frontend.home.component.tourSale')
 

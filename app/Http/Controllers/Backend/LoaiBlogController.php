@@ -14,7 +14,7 @@ class LoaiBlogController extends Controller
      */
     public function index(LoaiBlogDatatables $dataTable)
     {
-        return $dataTable->render('backend.blog.loaiblog.index');
+        return $dataTable->render('admin.loaiblog.index');
     }
 
     /**
@@ -22,7 +22,7 @@ class LoaiBlogController extends Controller
      */
     public function create()
     {
-        return view('backend.blog.loaiblog.create');
+        //
     }
 
     /**
@@ -30,62 +30,38 @@ class LoaiBlogController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'tenloaiblog' => 'required',
-        ]);
+        //
+    }
 
-        $loaiblog = new LoaiBlog();
-        $loaiblog->tenloaiblog = $request->tenloaiblog;
-
-        $loaiblog->save();
-
-        return redirect()->route('loaiblog.index');
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($maloaiblog)
+    public function edit(string $id)
     {
-        $loaiblog = LoaiBlog::findOrFail($maloaiblog);
-        return view('backend.blog.loaiblog.edit', compact('loaiblog'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
-        $request->validate([
-            'tenloaiblog' => 'required',
-        ]);
-
-        $loaiblog = LoaiBlog::findOrFail($id);
-        $loaiblog->tenloaiblog = $request->input('tenloaiblog');
-
-        $loaiblog->save();
-        return redirect()->route('loaiblog.index')->with('success', 'Cập nhật loại blog thành công!');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($maloaiblog)
+    public function destroy(string $id)
     {
-        LoaiBlog::find($maloaiblog)->delete();
-        return response(['status' => 'success', 'message' => 'Xóa loại blog thành công']);
-    }
-
-    public function massDestroy(Request $request)
-    {
-        if (!$request->has('ids')) {
-            return response()->json(['message' => 'Không có mục nào được chọn!'], 400);
-        }
-
-        $ids = $request->input('ids');
-
-        LoaiBlog::whereIn('maloaiblog', $ids)->delete();
-
-        return response()->json(['message' => 'Xóa thành công các mục đã chọn!']);
+        //
     }
 }

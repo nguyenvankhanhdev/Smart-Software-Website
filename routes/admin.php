@@ -26,6 +26,11 @@ use App\Http\Controllers\Backend\Quyen_NhomQuyenController;
 use App\Http\Controllers\Backend\QuyenController;
 use App\Http\Controllers\Backend\TourController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\HoaDonController;
+use App\Http\Controllers\Backend\LoaiBlogController;
+use App\Http\Controllers\Backend\LoaiTourController;
+use App\Http\Controllers\Backend\LoaiKhacHangController;
+use App\Http\Controllers\Backend\TourController;
 
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');

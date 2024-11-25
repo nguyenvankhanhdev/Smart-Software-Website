@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -18,24 +19,21 @@ class RegisterUserController extends Controller
     {
         return view('auth.login');
     }
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
-        $request->validate([
-            'username' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+        $request->validated();
         $user = new User();
-        $user->username = $request->username;
+        $user->tentaikhoan = $request->tentaikhoan;
         $user->email = $request->email;
-        $user->status = 1;
-        $user->role_id = 2;
+        $user->trangthai = 1;
+        $user->manhomquyen = 2;
         $user->password = Hash::make($request->password);
         $user->save();
 
         event(new Registered($user));
 
         Auth::login($user);
+
         return response()->json([
             'status' => 'success',
             'message' => 'Đăng kí thành công !!',
