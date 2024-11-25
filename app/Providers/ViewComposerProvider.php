@@ -23,14 +23,29 @@ class ViewComposerProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer(['index', 'frontend.tour.all-tour', 'frontend.tour.tour-detail'], function ($view) {
-            $tours = Tours::query()
-                ->leftJoin('tour_details', 'tours.id', '=', 'tour_details.tour_id')
-                ->select('tours.*')
-                ->where('tours.status', 1)
-                ->groupBy('tours.id')
+            $tours = Tour::query()
+                ->leftJoin('chitiettour', 'tour.matour', '=', 'chitiettour.matour')
+                ->leftJoin('diemdulich', 'chitiettour.madiemdulich', '=', 'diemdulich.madiemdulich')
+                ->leftJoin('danhgia', 'tour.matour', '=', 'danhgia.matour')
+                ->select('tour.*', 'diemdulich.tendiemdulich', DB::raw('AVG(danhgia.diemdanhgia) as avg_rating'))
+                ->where('tour.tinhtrang', 1)
+                ->groupBy('tour.matour')
                 ->paginate(6);
 
             $view->with('tours', $tours);
+        });
+
+        View::composer('*', function ($view) {
+            $destinationHeader = DiemDuLich::all();
+
+            $view->with('destinationHeader', $destinationHeader);
+        });
+
+        View::composer('*', function ($view) {
+            $listTours = LoaiTour::query()
+                ->select('tenloai')->get();
+
+            $view->with('listTours', $listTours);
         });
     }
 }
