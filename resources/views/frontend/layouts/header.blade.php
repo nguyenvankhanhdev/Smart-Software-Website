@@ -36,34 +36,6 @@
                     @endif
                 </div>
 
-
-                <div class="auth-buttons">
-                    @if (auth()->check())
-                        <div class="dropdown">
-                            <a href="#" class="btn btn-login dropdown-toggle" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-user me-2"></i>{{ auth()->user()->tentaikhoan }}
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown_user"  aria-labelledby="userDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="">Cài đặt</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><form method="POST" action="{{ route('auth.logout') }}">
-                                    @csrf
-                                        <a href="{{route('auth.logout')}}" onclick="event.preventDefault();
-                                        this.closest('form').submit();" class="dropdown-item has-icon text-danger">
-                                            <i class="fas fa-sign-out-alt"></i> Logout
-                                        </a>
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
-                    @else
-                        <a href="{{ route('auth') }}" class="btn btn-login">
-                            <i class="fa-solid fa-user me-2"></i>Đăng nhập
-                        </a>
-                        <a href="{{ route('auth') }}" class="btn btn-register">Đăng ký</a>
-                    @endif
-                </div>
             </div>
         </div>
     </nav>
